@@ -133,7 +133,6 @@ display: block;
     margin-bottom: 10px;
 }
 .experience-item h3, .education-item h3 {
-
     margin: 0;
     font-size: 1.2em;
 }
@@ -310,4 +309,9 @@ display: block;
 
 .contact-form button:hover {
     background: #005bb5;
+}
+
+.section-contact img {
+  height: 50px;
+  margin: 50px;
 }
