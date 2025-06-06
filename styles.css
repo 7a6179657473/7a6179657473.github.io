@@ -231,6 +231,7 @@ display: block;
   text-decoration: none;
   display: block;
   border-bottom: 1px solid #eee;
+  text-align: center;
 }
 .dropdown-content-skills a:last-child {
   border-bottom: none;
