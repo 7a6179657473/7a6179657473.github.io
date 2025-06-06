@@ -5,6 +5,8 @@ body {
     padding: 0;
     background-color: #694d48;
     color: #333;
+    border-radius: 20%;
+    overflow: hidden; /* Prevents scrollbars from rounded corners */
 }
 /* Navbar container */
 .navbar {
