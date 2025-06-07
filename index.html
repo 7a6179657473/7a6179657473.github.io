@@ -220,7 +220,18 @@
       Document Control Version: v.06
     </div>
   </footer>
+<script>
+// Animated gradient background
+(function() {
+  let hue = 200;
+  function animateBackground() {
+    hue = (hue + 0.2) % 360;
+    const nextHue = (hue + 60) % 360;
+    document.body.style.background = `linear-gradient(120deg, hsl(${hue}, 60%, 92%), hsl(${nextHue}, 70%, 98%))`;
+    requestAnimationFrame(animateBackground);
+  }
+  animateBackground();
+})();
+</script>
 </body>
-</html>
-</html></body></body>
 </html>
