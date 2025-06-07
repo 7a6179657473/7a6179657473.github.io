@@ -178,17 +178,7 @@ display: block;
 
 /* The section heading uses your existing .section h2 styling */
 
-/* Individual dropdown container */
-.dropdown-skills {
-  background-color: #fff;       /* White background for a clean look */
-  border: 1px solid #ccc;       /* Subtle border */
-  padding: 10px;
-  width: 200px;                 /* Fixed width for consistency */
-  display: flex;
-  flex-direction: column;       /* Stack the button and dropdown vertically */
-  position: relative;           /* Creates a containing block for absolute positioning */
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
+
 
 /* Dropdown Button */
 .dropbtn-skills {
@@ -217,6 +207,18 @@ display: block;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   z-index: 1;
   flex-direction: column;       /* Ensure internal links stack vertically */
+}
+
+/* Individual dropdown container */
+.dropdown-skills {
+  background-color: #fff;       /* White background for a clean look */
+  border: 1px solid #ccc;       /* Subtle border */
+  padding: 10px;
+  width: 200px;                 /* Fixed width for consistency */
+  display: flex;
+  flex-direction: column;       /* Stack the button and dropdown vertically */
+  position: relative;           /* Creates a containing block for absolute positioning */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Reveal dropdown content when hovering over the container */
