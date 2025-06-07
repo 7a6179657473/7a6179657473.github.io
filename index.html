@@ -217,17 +217,17 @@
   </div>
   <footer>
     <div style="text-align:center; font-size:0.9em; color:#888; margin-top:20px;">
-      Document Control Version: v.07
+      Document Control Version: v.08
     </div>
   </footer>
 <script>
-// Animated gradient background
+// Animated dark gradient background
 (function() {
   let hue = 200;
   function animateBackground() {
     hue = (hue + 0.2) % 360;
     const nextHue = (hue + 60) % 360;
-    document.body.style.background = `linear-gradient(120deg, hsl(${hue}, 60%, 92%), hsl(${nextHue}, 70%, 98%))`;
+    document.body.style.background = `linear-gradient(120deg, hsl(${hue}, 40%, 18%), hsl(${nextHue}, 50%, 12%))`;
     requestAnimationFrame(animateBackground);
   }
   animateBackground();
