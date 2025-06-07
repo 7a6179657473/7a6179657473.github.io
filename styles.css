@@ -180,11 +180,11 @@ display: block;
 
 
 
-/* Dropdown Button 
+/* Dropdown Button */ 
 .dropbtn-skills {
   background-color: #fff;       /* White background to blend with dropdown box */
- /* color: #333;                  /* Dark text, consistent with header and intro */
- /* padding: 9px;
+  color: #333;                  /* Dark text, consistent with header and intro */
+  padding: 9px;
   font-size: 16px;
   border: 1px solid #ccc;
   cursor: pointer;
@@ -193,69 +193,12 @@ display: block;
 }
 .dropbtn-skills:hover {
   background-color: #f9f9f9;    /* Subtle hover change */
-}  
+ }   
 
 
 
 
-.dropdown-skills {
-                    position: relative;
-                    display: inline-block;
-                    margin: 8px;
-                  }
-                  .dropbtn-skills {
-                    background-color: #f0f0f0;
-                    color: #333;
-                    padding: 12px 20px;
-                    font-size: 16px;
-                    border: 2px solid #888;
-                    border-radius: 6px;
-                    cursor: pointer;
-                    transition: background 0.2s, border-color 0.2s;
-                    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-                    outline: none;
-                    position: relative;
-                  }
-                  .dropbtn-skills:after {
-                    content: " ▼";
-                    font-size: 0.9em;
-                    color: #666;
-                    margin-left: 6px;
-                    transition: transform 0.2s;
-                  }
-                  .dropbtn-skills.active:after {
-                    transform: rotate(-180deg);
-                  }
-                  .dropbtn-skills:hover, .dropbtn-skills.active {
-                    background-color: #e0e0e0;
-                    border-color: #555;
-                  }
-                  .dropdown-content-skills {
-                    display: none;
-                    position: absolute;
-                    background-color: #fff;
-                    min-width: 220px;
-                    box-shadow: 0 8px 24px rgba(0,0,0,0.10);
-                    z-index: 1;
-                    border-radius: 6px;
-                    border: 1px solid #ddd;
-                    margin-top: 4px;
-                    padding: 8px 0;
-                  }
-                  .dropdown-content-skills a {
-                    color: #333;
-                    padding: 10px 18px;
-                    text-decoration: none;
-                    display: block;
-                    transition: background 0.15s;
-                    border-radius: 4px;
-                  }
-                  .dropdown-content-skills a:hover {
-                    background-color: #f5f5f5;
-                  }
-                  .dropdown-skills.open .dropdown-content-skills {
-                    display: block;
-                  }
+
 
 /* Styling for dropdown links */
 .dropdown-content-skills a {
