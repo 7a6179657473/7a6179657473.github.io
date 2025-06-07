@@ -194,7 +194,35 @@ display: block;
 .dropbtn-skills:hover {
   background-color: #f9f9f9;    /* Subtle hover change */
  }   
+/* Dropdown content (hidden by default) */
+.dropdown-content-skills {
+  display: none;
+  position: absolute;
+  top: 100%;                    /* Immediately below the button */
+  left: 0;
+  background-color: #fff;       /* White background for clarity */
+  border: 1px solid #ccc;
+  min-width: 100%;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  flex-direction: column;       /* Ensure internal links stack vertically */
+}
 
+/* Individual dropdown container */
+.dropdown-skills {
+  background-color: #fff;       /* White background for a clean look */
+  border: 1px solid #ccc;       /* Subtle border */
+  padding: 10px;
+  width: 200px;                 /* Fixed width for consistency */
+  display: flex;
+  flex-direction: column;       /* Stack the button and dropdown vertically */
+  position: relative;           /* Creates a containing block for absolute positioning */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+} 
+/* Reveal dropdown content when hovering over the container */
+.dropdown-skills:hover .dropdown-content-skills {
+  display: flex;
+}
 
 
 
