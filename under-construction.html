@@ -58,9 +58,95 @@
         .construction-container a:hover {
             background-color: #5b433e;
         }
+
+        .navbar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-left: 20px;
+        }
+
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #a27d76;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.9);
+            min-width: 160px;
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            color: white;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #a27d76;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
     </style>
 </head>
 <body>
+    <div class="navbar">
+        <div class="logo">Portfolio</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="https://7a6179657473.github.io/about_me.html">About</a></li>
+            <li class="dropdown">
+                <a href="#">Projects</a>
+                <div class="dropdown-content">
+                    <a href="https://7a6179657473.github.io/wpa.html">WPA audit</a>
+                    <!--
+                    <a href="https://7a6179657473.github.io/under-construction.html">Project 2</a>
+                    <a href="https://7a6179657473.github.io/under-construction.html">Project 3</a>
+                    -->
+                </div>
+            </li>
+            <li><a href="https://7a6179657473.github.io/under-construction.html">Contact</a></li>
+        </ul>
+    </div>
     <div class="construction-container">
         <h1>Under Construction</h1>
         <p>We’re working hard to bring this page to life. Stay tuned for updates!</p>
