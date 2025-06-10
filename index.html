@@ -223,16 +223,16 @@
  <script>
 // Animated dark gradient background 2nd version
 // This script creates a smooth animated gradient background that changes hue over time.
-// (function() {
-// / let hue = 200;
-//  function animateBackground() {
-//    hue = (hue + 0.2) % 360;
-//    const nextHue = (hue + 60) % 360;
- //   document.body.style.background = `linear-gradient(120deg, hsl(${hue}, 40%, 18%), hsl(${nextHue}, 50%, 12%))`;
- //   requestAnimationFrame(animateBackground);
- // }
- // animateBackground();
-// })();
+ (function() {
+ / let hue = 200;
+  function animateBackground() {
+    hue = (hue + 0.2) % 360;
+    const nextHue = (hue + 60) % 360;
+    document.body.style.background = `linear-gradient(120deg, hsl(${hue}, 40%, 18%), hsl(${nextHue}, 50%, 12%))`;
+    requestAnimationFrame(animateBackground);
+  }
+  animateBackground();
+ })();
 </script>
 </body>
 </html>
