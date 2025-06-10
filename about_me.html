@@ -60,5 +60,30 @@
             <p>When I am not immersed in the world of cybersecurity, I enjoy participating in bug bounties, learning from failures, sharing insights and technical knowledge with friends and family, often enthusiastically providing detailed explanations without prior warning, and exploring the intersections of technology and online human/bot behavior.</p>
         </div>
     </div>
+    <script>
+// Animated gradient background: from #694d48 to dark brown
+(function() {
+  // Convert hex to HSL for #694d48
+  // #694d48 => hsl(14, 21%, 36%)
+  let t = 0;
+  function lerp(a, b, t) { return a + (b - a) * t; }
+  function animateBackground() {
+    t = (t + 0.001) % 1; // slow loop
+    // Start: hsl(14, 21%, 36%) (#694d48)
+    // End:   hsl(25, 30%, 15%) (dark brown)
+    const h1 = 14, s1 = 21, l1 = 36;
+    const h2 = 25, s2 = 30, l2 = 15;
+    const h = lerp(h1, h2, t).toFixed(1);
+    const s = lerp(s1, s2, t).toFixed(1);
+    const l = lerp(l1, l2, t).toFixed(1);
+    const hNext = lerp(h1, h2, (t + 0.2) % 1).toFixed(1);
+    const sNext = lerp(s1, s2, (t + 0.2) % 1).toFixed(1);
+    const lNext = lerp(l1, l2, (t + 0.2) % 1).toFixed(1);
+    document.body.style.background = `linear-gradient(120deg, hsl(${h}, ${s}%, ${l}%), hsl(${hNext}, ${sNext}%, ${lNext}%))`;
+    requestAnimationFrame(animateBackground);
+  }
+  animateBackground();
+})();
+</script>
 </body>
 </html>
