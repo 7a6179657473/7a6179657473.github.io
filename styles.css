@@ -228,6 +228,7 @@ display: block;
   flex-direction: column;       /* Ensure internal links stack vertically */
 }
 
+
 /* Individual dropdown container */
 .dropdown-skills {
   background-color: #fff;       /* White background for a clean look */
