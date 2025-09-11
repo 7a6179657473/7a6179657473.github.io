@@ -4,40 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phish the Fish - Online Phishing Awareness</title>
+    <meta name="description" content="Learn how phishing attacks are crafted, what to look out for, and what to do if you fall victim. Practical tips for individuals and organizations.">
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-    <!-- navbar (copied from index.html) -->
-    <div class="navbar">
-      <div class="logo">Portfolio</div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">Portfolio</div>
         <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="https://7a6179657473.github.io/about_me.html">About</a></li>
-          <li class="dropdown">
-            <a href="#">Projects</a>
-            <div class="dropdown-content">
-              <a href="https://7a6179657473.github.io/wpa.html">WPA audit</a>
-              <a href="https://7a6179657473.github.io/phishthefish.html">Phish the Fish</a>
-            </div>
-          </li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about_me.html">About</a></li>
+            <li class="dropdown">
+                <a href="#" aria-haspopup="true" aria-expanded="false">Projects</a>
+                <div class="dropdown-content" role="menu">
+                    <a href="wpa.html" role="menuitem">WPA2 Security Research</a>
+                    <a href="phishthefish.html" role="menuitem" aria-current="page">Phish the Fish</a>
+                </div>
+            </li>
         </ul>
-    </div>
-    <div class="container">
-        <div class="header" style="text-align: center;">
+    </nav>
+
+    <main class="container">
+        <header class="header" style="text-align: center;">
             <h1>Phish the Fish</h1>
-            <p style="color: #c0392b; font-weight: bold;">Warning: You may have been redirected here because you interacted with a suspicious link or email. This page is designed to educate and protect you from online phishing attempts.</p>
-        </div>
-        <div class="section" style="margin-top: 32px;">
+            <div class="alert alert-danger" role="note">
+                Warning: You may have been redirected here because you interacted with a suspicious link or email. This page is designed to educate and protect you from online phishing attempts.
+            </div>
+        </header>
+        <section class="section" style="margin-top: 32px;">
             <h2>How Phishing Attacks Are Crafted</h2>
             <ul>
-                <li><strong>Impersonation:</strong> Attackers often mimic trusted brands, colleagues, or services to gain your trust.</li>
-                <li><strong>Urgency & Fear:</strong> Messages may claim your account is compromised or you must act quickly to avoid negative consequences.</li>
-                <li><strong>Malicious Links & Attachments:</strong> Emails may contain links to fake websites or attachments that install malware.</li>
-                <li><strong>Social Engineering:</strong> Attackers use information about you (from social media or public sources) to make messages more convincing.</li>
-                <li><strong>Spoofed Email Addresses:</strong> The sender’s address may look legitimate at first glance but is slightly altered.</li>
+                <li><strong>Impersonation:</strong> Attackers often pretend to be trusted brands, colleagues, or services to gain your trust.</li>
+                <li><strong>Urgency & Fear:</strong> Messages claim your account is compromised or you must act quickly to avoid negative consequences. <i>Example: fake toll road collection notices in states where toll roads don't exist.</i></li>
+                <li><strong>Malicious Links & Attachments:</strong> Emails may contain links to cloned websites or attachments that install malware. <i>Example: PDFs/Office documents prompting you to enable macros or "enhanced features."</i></li>
+                <li><strong>Social Engineering:</strong> Attackers use information about you (from social media or public sources) to make messages more convincing. <i>Skilled scammers research their targets to mimic banks, memberships, or services.</i></li>
+                <li><strong>Spoofed Email Addresses:</strong> The sender’s address may look legitimate at first glance but is slightly altered. <i>Example: netflix.com vs. netfIix.com (capital "I"), netlfix.com, or netflix-login.com.</i></li>
             </ul>
-        </div>
-        <div class="section" style="margin-top: 32px;">
+        </section>
+        <section class="section-2" style="margin-top: 32px;">
             <h2>What to Look Out For</h2>
             <ul>
                 <li>Unexpected requests for sensitive information (passwords, banking details, etc.)</li>
@@ -47,9 +51,10 @@
                 <li>Unusual sender addresses or domains</li>
                 <li>Attachments you weren’t expecting</li>
                 <li>Pressure to act immediately or threats of account suspension</li>
+                <li>Mismatched sender display name vs. actual email address</li>
             </ul>
-        </div>
-        <div class="section" style="margin-top: 32px;">
+        </section>
+        <section class="section" style="margin-top: 32px;">
             <h2>What To Do If You’ve Fallen Victim</h2>
             <ul>
                 <li><strong>Don’t Panic:</strong> Mistakes happen. Quick action can minimize harm.</li>
@@ -58,16 +63,18 @@
                 <li><strong>Contact Your IT/Security Team:</strong> If at work, report the incident right away.</li>
                 <li><strong>Monitor Accounts:</strong> Watch for unauthorized activity on your email, bank, and other accounts.</li>
                 <li><strong>Run Antivirus Scans:</strong> Check your device for malware or suspicious programs.</li>
+                <li><strong>Report the Incident:</strong> Forward phishing emails to your provider (e.g., reportphishing@apwg.org) and the impersonated organization.</li>
                 <li><strong>Learn & Share:</strong> Review how the attack happened and help others avoid similar traps.</li>
             </ul>
-        </div>
-        <div class="section" style="margin-top: 40px; text-align: center;">
-            <img src="phishing-warning.png" alt="Phishing Warning" style="width:100px; height:100px;">
-            <p style="margin-top:10px; color: #c0392b;">Stay alert. Think before you click. Protect yourself and your organization!</p>
-        </div>
-    </div>
+        </section>
+        <section class="section centered">
+            <img class="illustration" src="phishing-warning.png" alt="Phishing Warning">
+            <p class="alert alert-info">Stay alert. Think before you click. Protect yourself and your organization!</p>
+        </section>
+    </main>
+
     <footer>
-        <div style="text-align:center; font-size:0.9em; color:#888; margin-top:20px;">
-            Document Control Version:v.1
+        <div class="footer-content">
+            Document Control Version: v.2
         </div>
     </footer>

@@ -3,62 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me</title>
-
+    <title>About Me - Zayets Cybersecurity Professional</title>
+    <meta name="description" content="Learn about Zayets, a cybersecurity consultant and penetration tester with military experience and expertise in security audits, disaster recovery planning, and vulnerability assessment.">
     <link rel="stylesheet" type="text/css" href="styles.css">
-
 </head>
 <body>
-  <!-- navbar -->
-  <div class="navbar">
-    <div class="logo">Portfolio</div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="https://7a6179657473.github.io/about_me.html">About</a></li>
-        <li class="dropdown">
-          <a href="#">Projects</a>
-            <div class="dropdown-content">
-              <a href="https://7a6179657473.github.io/wpa.html">WPA audit</a>
-              <a href="https://7a6179657473.github.io/phishthefish.html">Phish the Fish</a>
-            </div>
-        </li>
-      </ul>
-  </div>
-    <div class="container">
-        <div class="header">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">Portfolio</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about_me.html" aria-current="page">About</a></li>
+            <li class="dropdown">
+                <a href="#" aria-haspopup="true" aria-expanded="false">Projects</a>
+                <div class="dropdown-content" role="menu">
+                    <a href="wpa.html" role="menuitem">WPA audit</a>
+                    <a href="phishthefish.html" role="menuitem">Phish the Fish</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="header">
             <h1>About Me</h1>
             <p>Cybersecurity Consultant | Penetration Tester | Security Enthusiast</p>
-        </div>
-        <div class="section">
+        </header>
+
+        <section class="section">
             <h2>Who I Am</h2>
-            <p>I am a cybersecurity professional with a unique blend of experiences, including military service, freelance consulting, and personal hobbies. My journey began in the United States Marine Corps, where I honed my skills in administration, compliance, and leadership. This foundation has propelled me into a career focused on uncovering vulnerabilities and empowering organizations to enhance their defenses against various threats.</p>
-            <p>Outside of work, I enjoy exploring and experimenting with new technologies, often delving into the intricacies of devices and gadgets to understand their capabilities. This includes challenging myself with rooting personal devices as a learning exercise. Additionally, I find balance through outdoor activities such as rucking and hiking, which allow me to connect with nature while pursuing personal fitness goals.</p>
-        </div>
-        <div class="section">
-            <h2>Experience</h2>
-            <p>My professional experience includes:</p>
-            <ul>
-                <li><strong>Plant Administrator:</strong> Managing operational data, budget development, and procurement at Mutual Materials.</li>
-                <li><strong>IT Security Consultant:</strong> Performing security control assessments and vulnerability analyses for non-profit organizations.</li>
-                <li><strong>Cybersecurity Consultant:</strong> Conducting audits, implementing disaster recovery planning, and educating organizational leadership on best practices.</li>
-                <li><strong>Administrative Roles in the Marine Corps:</strong> Managing personnel, developing SOPs, and ensuring compliance with USMC regulations.</li>
-            </ul>
-            <p>Additionally, I have actively participated in bug bounty programs, working to uncover vulnerabilities in real-world applications and contributing to safer online environments. My successful contributions have affected state, federal, education, and consumer organizations.</p>
-        </div>
-        <div class="section">
+            <p>I am a cybersecurity professional with a unique blend of experiences, including military service, freelance consulting, and continuous learning. My journey began in the United States Marine Corps, where I developed foundational skills in administration, compliance, and leadership. This military background has been instrumental in my transition to a cybersecurity career focused on vulnerability assessment and organizational defense enhancement.</p>
+            <p>Outside of my professional work, I actively engage with emerging technologies, often conducting hands-on research with various devices and systems to better understand their security implications. This curiosity-driven approach extends to personal projects, including device security research and analysis. I maintain work-life balance through outdoor activities such as rucking and hiking, which provide both physical fitness and mental clarity essential for effective security analysis.</p>
+        </section>
+        <section class="section">
+            <h2>Professional Experience</h2>
+            <p>My diverse professional background spans both cybersecurity and operational management:</p>
+            <div class="experience-summary">
+                <article class="experience-highlight">
+                    <h3>Current Role - Plant Administrator</h3>
+                    <p>Managing operational data, budget development, and procurement processes at Mutual Materials, overseeing multi-million dollar transactions and safety compliance.</p>
+                </article>
+                
+                <article class="experience-highlight">
+                    <h3>Cybersecurity Consulting (2019-2022)</h3>
+                    <p>Conducted comprehensive security audits, implemented disaster recovery planning, and provided executive-level cybersecurity education for small to medium businesses.</p>
+                </article>
+                
+                <article class="experience-highlight">
+                    <h3>Military Service - US Marine Corps</h3>
+                    <p>Served in administrative and security roles, managing personnel operations, developing standard operating procedures, and ensuring regulatory compliance for 300+ multi-service members.</p>
+                </article>
+            </div>
+            <p><strong>Bug Bounty Research:</strong> I actively participate in responsible disclosure programs, successfully identifying vulnerabilities across state, federal, educational, and consumer-facing applications. This continuous research keeps me current with emerging threats and attack vectors.</p>
+        </section>
+        <section class="section">
             <h2>Education & Certifications</h2>
-            <p>I hold an Associate of Applied Science in Cybersecurity Penetration Testing from Mt. Hood Community College. My education has equipped me with technical expertise in network security, penetration testing, and compliance frameworks.</p>
-            <p>I am continuously pursuing certifications and training to stay aware of industry advancements.</p>
+            <article class="education-item">
+                <h3>Associate of Applied Science in Cybersecurity Penetration Testing</h3>
+                <p><strong>Mt. Hood Community College</strong> | September 2019 - December 2020</p>
+                <p>Comprehensive curriculum covering network security, penetration testing methodologies, compliance frameworks, and hands-on security assessment techniques.</p>
+            </article>
+            <div class="continuing-education">
+                <p><strong>Continuous Learning:</strong> I maintain currency with cybersecurity developments through ongoing professional training, industry conferences, and hands-on research. This commitment ensures my knowledge remains relevant in the rapidly evolving threat landscape.</p>
+            </div>
+        </section>
+        <section class="section">
+            <h2>Professional Philosophy</h2>
+            <p>My approach to cybersecurity consulting centers on empowerment through education. I believe in fostering security-conscious mindsets within organizations by providing actionable, real-world insights that teams can immediately implement. Rather than simply identifying problems, I focus on building organizational capacity for proactive risk identification and resilience.</p>
+            <p>Every engagement—whether a brief consultation, weekend assessment, or comprehensive long-term project—represents an opportunity to create lasting positive impact on an organization's security posture and culture.</p>
+        </section>
+
+        <section class="section">
+            <h2>Personal Interests & Research</h2>
+            <p>Beyond professional cybersecurity work, my interests include:</p>
+            <ul class="interests-list">
+                <li><strong>Security Research:</strong> Participating in bug bounty programs and vulnerability research</li>
+                <li><strong>Technology Exploration:</strong> Hands-on analysis of emerging technologies and security implications</li>
+                <li><strong>Knowledge Sharing:</strong> Providing detailed technical explanations and cybersecurity awareness to colleagues, friends, and family</li>
+                <li><strong>Behavioral Analysis:</strong> Studying the intersection of technology and human/automated behavior patterns</li>
+                <li><strong>Outdoor Activities:</strong> Rucking, hiking, and other activities that support physical and mental wellness</li>
+            </ul>
+            <p>I view failures and challenges as valuable learning opportunities, continuously refining my understanding of both technical systems and the human factors that influence cybersecurity effectiveness.</p>
+        </section>
+
+        <section class="section-contact">
+            <h2>Connect With Me</h2>
+            <p>Interested in learning more about my cybersecurity expertise or discussing potential collaboration?</p>
+            <div class="contact-links">
+                <a href="https://twitter.com/zayets8" target="_blank" rel="noopener noreferrer" aria-label="Follow on Twitter">
+                    <img src="twitter-logo.png" alt="Twitter" width="50" height="50">
+                </a>
+                <a href="https://github.com/7a6179657473" target="_blank" rel="noopener noreferrer" aria-label="View GitHub profile">
+                    <img src="github-logo.png" alt="GitHub" width="50" height="50">
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            Document Control Version: v.2
         </div>
-        <div class="section">
-            <h2>Core Beliefs</h2>
-            <p>I believe in fostering an educated, driven mindset in every organization I collaborate with. By providing actionable, real-world insights and practical solutions, I strive to assist teams to proactively identify risks and build resiliency.</p>
-            <p>Every interaction, whether a brief consultation or a long-term project, is an opportunity to leave a worthwhile positive impact.</p>
-        </div>
-        <div class="section">
-            <h2>Personal Interests</h2>
-            <p>When I am not immersed in the world of cybersecurity, I enjoy participating in bug bounties, learning from failures, sharing insights and technical knowledge with friends and family, often enthusiastically providing detailed explanations without prior warning, and exploring the intersections of technology and online human/bot behavior.</p>
-        </div>
-    </div>
+    </footer>
 </body>
 </html>

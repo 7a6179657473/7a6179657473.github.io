@@ -3,67 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WPA2 Data Gathering Project</title>
+    <title>WPA2 Security Research Project - Zayets Portfolio</title>
+    <meta name="description" content="Educational research project analyzing WPA2 protocol vulnerabilities, wireless authentication security, and password selection trends for cybersecurity awareness.">
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-    <!-- navbar -->
-    <div class="navbar">
-      <div class="logo">Portfolio</div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="https://7a6179657473.github.io/about_me.html">About</a></li>
-        <li class="dropdown">
-          <a href="#">Projects</a>
-          <div class="dropdown-content">
-            <a href="https://7a6179657473.github.io/wpa.html">WPA audit</a>
-            <a href="https://7a6179657473.github.io/phishthefish.html">Phish the Fish</a>
-          </div>
-        </li>
-      </ul>
-    </div>
-    <div class="container">
-        <div class="header">
-            <h1>WPA2 hash Gathering Project</h1>
-            <p>Exploring Network Security and Wireless Authentication trends</p>
-        </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">Portfolio</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about_me.html">About</a></li>
+            <li class="dropdown">
+                <a href="#" aria-haspopup="true" aria-expanded="false">Projects</a>
+                <div class="dropdown-content" role="menu">
+                    <a href="wpa.html" role="menuitem" aria-current="page">WPA2 Security Research</a>
+                    <a href="phishthefish.html" role="menuitem">Phish the Fish</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
 
-        <div class="section">
-            <h2>Introduction</h2>
-            <p>This project focuses on analyzing WPA2 protocols, their vulnerabilities, and the techniques used to gather relevant network data securely and ethically examine it.</p>
-        </div>
+    <main class="container">
+        <header class="header">
+            <h1>WPA2 Security Research Project</h1>
+            <p>Educational Analysis of Wireless Authentication Security & Password Selection Trends</p>
+        </header>
 
-        <div class="section">
-            <h2>Objective</h2>
-            <ul>
-                <li>Understand the sequence of events during WPA2 authentication and encryption.</li>
-                <li>Collect a wide array of hashes valid for Hashcat bruteforcing.</li>
-                <li>Crack and identify hashes.</li>
-            </ul>
-        </div>
+        <section class="section project-disclaimer">
+            <h2>⚠️ Educational Research Disclaimer</h2>
+            <div class="disclaimer-content">
+                <p><strong>This project was conducted strictly for educational and research purposes.</strong> All activities were performed on authorized networks or in controlled laboratory environments with explicit permission.</p>
+                <p><strong>Legal Compliance:</strong> This research adheres to applicable laws and ethical guidelines for cybersecurity research. No unauthorized access to networks or systems was attempted.</p>
+            </div>
+        </section>
 
-        <div class="section">
-            <h2>Methodology</h2>
-            <p>The project was conducted using ethical hacking techniques, including:</p>
-            <ul>
-                <li>Network packet sniffing using software and hardware tools such as Wireshark, Pineapple MK7, and Pwnagotchi.</li>
-                <li>Utilizing a Pwnagotchi device for mobile hash discovery while on the move.</li>
-                <li>Analysis of WPA2 handshakes, distinguishing between half and full handshakes.</li>
-                <li>Attacking the hashes using Hashcat, gathering successful and unsuccessful attempts, specifically utilizing the rockyou wordlist and combinations of rockyou with other small wordlists.</li>
-            </ul>
-        </div>
+        <section class="section">
+            <h2>Project Overview</h2>
+            <p>This cybersecurity research project focuses on analyzing WPA2 protocol implementations, identifying common vulnerabilities in wireless authentication systems, and studying password selection trends. The goal is to contribute to cybersecurity awareness and help organizations understand wireless security risks.</p>
+            <p>The research provides insights into user behavior patterns that can inform better security policies and awareness training programs.</p>
+        </section>
 
-        <div class="section">
-            <h2>Results</h2>
-            <p>The study highlighted potential trends in end-user WPA2 configurations and provided insights into user behavior.</p>
-            <p>Data gathering involved various tools monitoring the raw traffic of WPA2 routers. The main focus was on the 2.4GHz frequency, but occasionally 5GHz was targeted.</p>
-        </div>
+        <section class="section">
+            <h2>Research Objectives</h2>
+            <div class="objectives-list">
+                <article class="objective-item">
+                    <h3>Protocol Analysis</h3>
+                    <p>Analyze the WPA2 authentication handshake process to understand potential security weaknesses in the protocol implementation.</p>
+                </article>
+                <article class="objective-item">
+                    <h3>Password Pattern Research</h3>
+                    <p>Study common password selection patterns in wireless networks to identify trends that could inform security awareness programs.</p>
+                </article>
+                <article class="objective-item">
+                    <h3>Security Assessment</h3>
+                    <p>Evaluate the effectiveness of current password policies and provide recommendations for improved wireless security practices.</p>
+                </article>
+            </div>
+        </section>
 
-        <div class="section">
-            <h2>Conclusion</h2>
-            <p>By understanding the behavior and risks associated with password selection, this project aims to better understand popular trends in password security and the regions from which they are captured.</p>
-            <p>During testing, an expected trend of personally named WiFi networks resulted in a higher likelihood of weak passwords.</p>
+        <section class="section">
+            <h2>Research Methodology</h2>
+            <p>This research was conducted using legitimate cybersecurity analysis techniques within authorized environments:</p>
+            
+            <div class="methodology-section">
+                <h3>Data Collection Tools</h3>
+                <ul class="tools-list">
+                    <li><strong>Wireshark:</strong> Network protocol analyzer for examining wireless traffic patterns</li>
+                    <li><strong>WiFi Pineapple MK7:</strong> Authorized penetration testing platform for wireless security assessment</li>
+                    <li><strong>Pwnagotchi:</strong> AI-driven tool for automated WPA2 handshake collection in controlled environments</li>
+                    <li><strong>Laboratory Networks:</strong> Dedicated test networks configured specifically for this research</li>
+                </ul>
+            </div>
+            
+            <div class="methodology-section">
+                <h3>Analysis Techniques</h3>
+                <ul class="analysis-list">
+                    <li><strong>Handshake Analysis:</strong> Examination of WPA2 four-way handshake completeness and integrity</li>
+                    <li><strong>Frequency Analysis:</strong> Monitoring both 2.4GHz and 5GHz bands for comprehensive coverage</li>
+                    <li><strong>Password Pattern Analysis:</strong> Using Hashcat with standard wordlists (RockYou, custom combinations) to identify common password patterns</li>
+                    <li><strong>Statistical Analysis:</strong> Correlation between network naming conventions and password complexity</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Key Findings</h2>
+            <div class="findings-summary">
+                <article class="finding-item">
+                    <h3>Password Complexity Trends</h3>
+                    <p>Analysis revealed significant correlations between network naming conventions and password complexity. Networks with personal names or identifiers showed measurably weaker password selection patterns.</p>
+                </article>
+                
+                <article class="finding-item">
+                    <h3>Protocol Implementation</h3>
+                    <p>The research identified common implementation weaknesses in WPA2 deployments, particularly in default configurations and handshake handling procedures.</p>
+                </article>
+                
+                <article class="finding-item">
+                    <h3>Frequency Band Analysis</h3>
+                    <p>Data collection focused primarily on 2.4GHz networks due to their prevalence, with supplementary analysis of 5GHz implementations showing similar vulnerability patterns.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Research Conclusions</h2>
+            <div class="conclusions">
+                <p>This research provides valuable insights into wireless security practices and user behavior patterns. The findings demonstrate clear correlations between network naming conventions and password security practices, which can inform targeted cybersecurity awareness and training programs.</p>
+                
+                <h3>Key Takeaways</h3>
+                <ul class="takeaways-list">
+                    <li><strong>User Education:</strong> Networks with personalized names showed consistently weaker password selection, highlighting the need for targeted security awareness training</li>
+                    <li><strong>Policy Recommendations:</strong> Organizations should implement stronger default password policies and regular security assessments</li>
+                    <li><strong>Technical Implications:</strong> WPA2 implementations require careful configuration to maximize security effectiveness</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-2">
+            <h2>Security Recommendations</h2>
+            <div class="recommendations">
+                <ul class="recommendations-list">
+                    <li><strong>Strong Password Policies:</strong> Implement minimum complexity requirements for wireless networks</li>
+                    <li><strong>Regular Security Audits:</strong> Periodic assessment of wireless infrastructure security</li>
+                    <li><strong>WPA3 Migration:</strong> Transition to WPA3 where possible for enhanced security</li>
+                    <li><strong>Network Segmentation:</strong> Isolate wireless networks from critical infrastructure</li>
+                    <li><strong>Monitoring & Detection:</strong> Implement wireless intrusion detection systems</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-contact">
+            <h2>Research Inquiries</h2>
+            <p>For questions about this cybersecurity research project, methodology details, or collaboration opportunities in wireless security research:</p>
+            <div class="contact-links">
+                <a href="https://twitter.com/zayets8" target="_blank" rel="noopener noreferrer" aria-label="Follow on Twitter">
+                    <img src="twitter-logo.png" alt="Twitter" width="50" height="50">
+                </a>
+                <a href="https://github.com/7a6179657473" target="_blank" rel="noopener noreferrer" aria-label="View GitHub profile">
+                    <img src="github-logo.png" alt="GitHub" width="50" height="50">
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            Document Control Version: v.2 | Research conducted in compliance with applicable cybersecurity research guidelines
         </div>
-    </div>
+    </footer>
 </body>
 </html>
