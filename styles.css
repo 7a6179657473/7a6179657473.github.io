@@ -550,6 +550,16 @@ a[aria-current="page"] {
     }
 }
 
+/* Alternative pulse animation for document icon */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
 .download-note {
     margin-top: 15px;
     font-size: 0.9em;
