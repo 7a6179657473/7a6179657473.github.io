@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Security Note: Consider adding Content Security Policy for enhanced security:
+         <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; object-src 'none';"> -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Me - Zayets Cybersecurity Professional</title>
@@ -90,6 +92,18 @@
             <p>I view failures and challenges as valuable learning opportunities, continuously refining my understanding of both technical systems and the human factors that influence cybersecurity effectiveness.</p>
         </section>
 
+        <section class="section-resume-download">
+            <h2>📄 Download My Resume</h2>
+            <p>Get a comprehensive overview of my professional experience, skills, and projects in a downloadable resume format generated from this portfolio.</p>
+            <div class="resume-download-container">
+                <button id="downloadResumeBtn" class="download-btn" onclick="generateResume()">
+                    <span class="download-icon">⬇</span>
+                    Download Resume (PDF)
+                </button>
+                <p class="download-note">The resume is automatically generated from the latest portfolio information and includes all professional experience, projects, and technical skills.</p>
+            </div>
+        </section>
+
         <section class="section-contact">
             <h2>Let's Connect</h2>
             <p>Interested in learning more about my cybersecurity expertise or discussing potential collaboration?</p>
@@ -111,5 +125,207 @@
             Document Control Version: v.2
         </div>
     </footer>
+    <!-- jsPDF Library for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" 
+            integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNhDrdkiUhTzgLoQWeV5o+rutkLBXGdUmjl0d2EcdrN+r1+x+7T0cNrnw==" 
+            crossorigin="anonymous" 
+            referrerpolicy="no-referrer"></script>
+    
+    <script>
+        function generateResume() {
+            try {
+                // Verify jsPDF library is loaded
+                if (typeof window.jspdf === 'undefined' || typeof window.jspdf.jsPDF === 'undefined') {
+                    throw new Error('PDF generation library failed to load. Please refresh the page and try again.');
+                }
+                
+                // Create new jsPDF instance
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+            
+            // Set font
+            doc.setFont("helvetica");
+            
+            let yPos = 20;
+            const lineHeight = 6;
+            const margin = 20;
+            const pageWidth = doc.internal.pageSize.width;
+            
+            // Helper function to add text with word wrap
+            function addText(text, fontSize = 10, isBold = false, isTitle = false) {
+                if (yPos > 270) {
+                    doc.addPage();
+                    yPos = 20;
+                }
+                
+                doc.setFontSize(fontSize);
+                if (isBold) {
+                    doc.setFont("helvetica", "bold");
+                } else {
+                    doc.setFont("helvetica", "normal");
+                }
+                
+                if (isTitle) {
+                    doc.text(text, pageWidth / 2, yPos, { align: 'center' });
+                } else {
+                    const lines = doc.splitTextToSize(text, pageWidth - 2 * margin);
+                    doc.text(lines, margin, yPos);
+                    yPos += lines.length * lineHeight;
+                }
+                
+                if (isTitle) {
+                    yPos += lineHeight;
+                }
+            }
+            
+            function addBulletPoint(text) {
+                if (yPos > 270) {
+                    doc.addPage();
+                    yPos = 20;
+                }
+                doc.setFont("helvetica", "normal");
+                doc.setFontSize(10);
+                const lines = doc.splitTextToSize(text, pageWidth - 2 * margin - 10);
+                doc.text("•", margin + 5, yPos);
+                doc.text(lines, margin + 10, yPos);
+                yPos += lines.length * lineHeight;
+            }
+            
+            function addSpace(space = 8) {
+                yPos += space;
+            }
+            
+            // Header
+            addText("ZAYETS", 20, true, true);
+            addText("Cybersecurity Consultant | Penetration Tester | Security Enthusiast", 12, false, true);
+            addSpace();
+            addText("Twitter: @zayets8 | GitHub: github.com/7a6179657473", 10, false, true);
+            addSpace(12);
+            
+            // Professional Summary
+            addText("PROFESSIONAL SUMMARY", 14, true);
+            addText("Dedicated cybersecurity professional with expertise in penetration testing, security auditing, and compliance management. Military background with experience spanning from administrative operations to private sector consulting. Brings a comprehensive approach to cybersecurity challenges with focus on strengthening security postures through thorough assessments, practical solutions, and knowledge transfer.");
+            addSpace();
+            
+            // Key Highlights
+            addText("KEY HIGHLIGHTS", 12, true);
+            addBulletPoint("Specialized in NIST framework compliance and implementation");
+            addBulletPoint("Experience with vulnerability assessments and penetration testing");
+            addBulletPoint("Disaster recovery planning and business continuity expertise");
+            addBulletPoint("Network security architecture evaluation");
+            addBulletPoint("Federal compliance and regulatory adherence (Military background)");
+            addBulletPoint("Bug bounty research across state, federal, educational, and consumer applications");
+            addSpace();
+            
+            // Professional Experience
+            addText("PROFESSIONAL EXPERIENCE", 14, true);
+            
+            addText("Plant Administrator | Mutual Materials, Gresham, OR | April 2023 - Present", 11, true);
+            addBulletPoint("Verified and recorded daily production data accurately");
+            addBulletPoint("Organized and managed filing systems for production reports, improving operational efficiency");
+            addBulletPoint("Developed comprehensive budgeting tool for two manufacturing plants, optimizing budget management");
+            addBulletPoint("Processed and created over 1,000 purchase orders, overseeing transactions totaling over $9 million");
+            addBulletPoint("Served as member of safety committee, reviewing incidents and conducting safety briefs");
+            addSpace();
+            
+            addText("Cybersecurity Consultant | Freelance, Gresham, OR | March 2019 - October 2022", 11, true);
+            addBulletPoint("Conducted in-depth security audits, assessing vulnerabilities for small to medium businesses");
+            addBulletPoint("Developed and implemented disaster recovery plans based on NIST SP 800-34 guidelines");
+            addBulletPoint("Evaluated network security architecture compliance with NIST standards");
+            addBulletPoint("Assessed digital footprints of executive members for potential credential breaches");
+            addBulletPoint("Presented on attack vectors to inform and equip network administrators against threats");
+            addBulletPoint("Stayed updated on cybersecurity trends to emulate real-world attack scenarios");
+            addSpace();
+            
+            addText("IT Security Consultant | Non-Profit, Contract, Clackamas, OR | July 2021 - October 2021", 11, true);
+            addBulletPoint("Assessed security controls, including firewalls and VPNs");
+            addBulletPoint("Conducted comprehensive IT security audit, identifying potential risks");
+            addBulletPoint("Collaborated with IT teams to enhance organization's security posture");
+            addBulletPoint("Prepared detailed reports based on vulnerability findings for leadership");
+            addSpace();
+            
+            addText("Administrative Manager, Corporal | US Marine Corps, Quantico, VA | May 2017 - August 2018", 11, true);
+            addBulletPoint("Developed SOPs to ensure compliance with federal regulations");
+            addBulletPoint("Created administrative processes to streamline operations and assign responsibilities");
+            addBulletPoint("Trained and guided personnel, supporting over 300 multi-service members");
+            addBulletPoint("Held roles as DTS Routing Official and Organizational Defense Travel Agent, processing over 7,500 authorizations and vouchers");
+            addSpace();
+            
+            addText("Administrative Specialist, Private-Lance Corporal | US Marine Corps, Quantico, VA | June 2016 - February 2017", 11, true);
+            addBulletPoint("Conducted security preparations for confidential meetings");
+            addBulletPoint("Assumed responsibilities as DTS Routing Official and Non-Defense Travel System Entry Agent");
+            addBulletPoint("Participated in building security management rotations, ensuring data and technology integrity");
+            addSpace();
+            
+            // Education
+            addText("EDUCATION", 14, true);
+            addText("Associate of Applied Science in Cybersecurity Penetration Testing", 11, true);
+            addText("Mt. Hood Community College, Gresham, OR | September 2019 - December 2020");
+            addText("Comprehensive curriculum covering network security, penetration testing methodologies, compliance frameworks, and hands-on security assessment techniques.");
+            addSpace();
+            
+            // Technical Skills
+            addText("TECHNICAL SKILLS & EXPERTISE", 14, true);
+            addText("Security Auditing:", 11, true);
+            addBulletPoint("Comprehensive security assessments and vulnerability analysis");
+            addBulletPoint("NIST Cybersecurity Framework and SP 800-53 compliance");
+            addBulletPoint("Disaster recovery planning (ISO 22301, NIST SP 800-34)");
+            addBulletPoint("HIPAA, PCI DSS, SOX IT controls compliance");
+            addSpace(4);
+            
+            addText("Penetration Testing:", 11, true);
+            addBulletPoint("Wireless security assessment (WPA/WPA2 analysis)");
+            addBulletPoint("Network protocol analysis using Wireshark");
+            addBulletPoint("Social engineering awareness and phishing simulation");
+            addBulletPoint("Vulnerability scanning and penetration testing coordination");
+            addSpace(4);
+            
+            addText("Administration & Compliance:", 11, true);
+            addBulletPoint("Personnel onboarding and security awareness training");
+            addBulletPoint("Process development and standard operating procedures");
+            addBulletPoint("Risk assessment and management process design");
+            addBulletPoint("Incident response plan development and testing");
+            addSpace();
+            
+            // Featured Projects
+            addText("FEATURED PROJECTS", 14, true);
+            
+            addText("WPA2 Security Research Project", 11, true);
+            addText("Educational analysis of wireless authentication security and password selection trends. Conducted protocol analysis of WPA2 implementations, identified common vulnerabilities, and studied password patterns using legitimate cybersecurity techniques in authorized environments.");
+            addSpace(4);
+            
+            addText("Phish the Fish - Social Engineering Awareness", 11, true);
+            addText("Comprehensive phishing awareness project showcasing attack vectors, prevention strategies, and response procedures. Developed educational materials covering impersonation techniques, malicious links, social engineering tactics, and organizational defense mechanisms.");
+            addSpace(4);
+            
+            addText("Security Auditing Framework", 11, true);
+            addText("Systematic approach to organizational security assessments based on NIST Cybersecurity Framework. Includes comprehensive methodology for planning, data collection, gap analysis, and remediation with focus on actionable recommendations and compliance alignment.");
+            addSpace();
+            
+            // Professional Philosophy
+            addText("PROFESSIONAL PHILOSOPHY", 14, true);
+            addText("Approach centers on empowerment through education, fostering security-conscious mindsets within organizations by providing actionable, real-world insights. Focus on building organizational capacity for proactive risk identification and resilience rather than simply identifying problems.");
+            
+            // Add footer with generation date
+            const today = new Date();
+            const dateString = today.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            doc.setFontSize(8);
+            doc.setFont("helvetica", "normal");
+            doc.text(`Resume generated from portfolio on ${dateString}`, pageWidth / 2, 285, { align: 'center' });
+            
+            // Save the PDF with sanitized filename
+            const filename = 'Zayets_Cybersecurity_Resume.pdf';
+            doc.save(filename);
+            
+            // Optional: Log successful generation (for analytics, remove if privacy concerns)
+            console.log('Resume PDF generated successfully');
+            
+        } catch (error) {
+            // Handle errors gracefully
+            console.error('Resume generation failed:', error.message);
+            alert('Error generating resume: ' + error.message + '\n\nPlease refresh the page and try again. If the problem persists, your browser may not support PDF generation.');
+        }
+    }
+    </script>
 </body>
 </html>
