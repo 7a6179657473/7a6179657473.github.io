@@ -502,6 +502,10 @@ a[aria-current="page"] {
 
 .resume-download-container {
     margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
 }
 
 .download-btn {
@@ -560,12 +564,50 @@ a[aria-current="page"] {
     }
 }
 
+.docx-btn {
+    background: linear-gradient(135deg, #0078d4 0%, #106ebe 100%);
+}
+
+.docx-btn:hover {
+    background: linear-gradient(135deg, #106ebe 0%, #005a9e 100%);
+    box-shadow: 0 6px 20px rgba(0, 120, 212, 0.4);
+}
+
+.download-notes {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 20px;
+}
+
 .download-note {
-    margin-top: 15px;
+    margin: 0;
     font-size: 0.9em;
     color: #777;
     font-style: italic;
     line-height: 1.4;
+    text-align: center;
+}
+
+/* Responsive design for download buttons */
+@media (min-width: 768px) {
+    .resume-download-container {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .download-notes {
+        width: 100%;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    .download-btn {
+        width: 100%;
+        max-width: 280px;
+    }
 }
 
 /* GitHub Projects Section */

@@ -102,14 +102,21 @@
         </section>
 
         <section class="section-resume-download">
-            <h2>📄 View My Resume</h2>
-            <p>Get a comprehensive overview of my professional experience, skills, and projects in a clean, printable format.</p>
+            <h2>📄 Get My Resume</h2>
+            <p>Get a comprehensive overview of my professional experience, skills, and projects in your preferred format.</p>
             <div class="resume-download-container">
                 <button id="viewResumeBtn" class="download-btn" onclick="openResumeView()">
                     <span class="download-icon">📄</span>
                     Open Resume View
                 </button>
-                <p class="download-note">Opens a printer-friendly resume in a new window. Use your browser's print function to save as PDF or print directly.</p>
+                <button id="downloadDocxBtn" class="download-btn docx-btn" onclick="downloadResumeDocx()">
+                    <span class="download-icon">📎</span>
+                    Download as DOCX
+                </button>
+                <div class="download-notes">
+                    <p class="download-note"><strong>Resume View:</strong> Opens a printer-friendly resume in a new window. Use your browser's print function to save as PDF or print directly.</p>
+                    <p class="download-note"><strong>DOCX Download:</strong> Downloads a Microsoft Word compatible document that you can edit and customize.</p>
+                </div>
             </div>
         </section>
 
@@ -134,6 +141,11 @@
             Document Control Version: v.2
         </div>
     </footer>
+    
+    <!-- Include docx library for DOCX generation -->
+    <script src="https://unpkg.com/docx@8.5.0/build/index.js"></script>
+    <script src="https://unpkg.com/file-saver@2.0.5/dist/FileSaver.min.js"></script>
+    
     <script>
         function openResumeView() {
             const resumeWindow = window.open('', '_blank', 'width=800,height=900,scrollbars=yes,resizable=yes');
@@ -359,6 +371,324 @@
             resumeWindow.document.write(resumeHTML);
             resumeWindow.document.close();
             resumeWindow.focus();
+        }
+        
+        async function downloadResumeDocx() {
+            try {
+                // Check if docx library is loaded
+                if (typeof docx === 'undefined') {
+                    alert('DOCX library is still loading. Please try again in a moment.');
+                    return;
+                }
+                
+                const { Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType, BorderStyle } = docx;
+                
+                // Create a new document
+                const doc = new Document({
+                    sections: [{
+                        properties: {},
+                        children: [
+                            // Header
+                            new Paragraph({
+                                children: [
+                                    new TextRun({
+                                        text: "ZAYETS",
+                                        bold: true,
+                                        size: 32,
+                                    }),
+                                ],
+                                heading: HeadingLevel.HEADING_1,
+                                alignment: AlignmentType.CENTER,
+                            }),
+                            new Paragraph({
+                                children: [
+                                    new TextRun({
+                                        text: "Cybersecurity Consultant | Penetration Tester | Security Enthusiast",
+                                        italics: true,
+                                        size: 22,
+                                    }),
+                                ],
+                                alignment: AlignmentType.CENTER,
+                                spacing: { after: 200 }
+                            }),
+                            new Paragraph({
+                                children: [
+                                    new TextRun({
+                                        text: "Twitter: @zayets8 | GitHub: github.com/7a6179657473",
+                                        size: 20,
+                                    }),
+                                ],
+                                alignment: AlignmentType.CENTER,
+                                spacing: { after: 400 }
+                            }),
+                            
+                            // Professional Summary
+                            new Paragraph({
+                                children: [
+                                    new TextRun({
+                                        text: "PROFESSIONAL SUMMARY",
+                                        bold: true,
+                                        size: 24,
+                                    }),
+                                ],
+                                heading: HeadingLevel.HEADING_2,
+                                spacing: { before: 200, after: 200 }
+                            }),
+                            new Paragraph({
+                                children: [
+                                    new TextRun({
+                                        text: "Dedicated cybersecurity professional with expertise in penetration testing, security auditing, and compliance management. Military background with experience spanning from administrative operations to private sector consulting. Brings a comprehensive approach to cybersecurity challenges with focus on strengthening security postures through thorough assessments, practical solutions, and knowledge transfer.",
+                                        size: 22,
+                                    }),
+                                ],
+                                spacing: { after: 200 }
+                            }),
+                            
+                            // Key Highlights
+                            new Paragraph({
+                                children: [
+                                    new TextRun({
+                                        text: "KEY HIGHLIGHTS",
+                                        bold: true,
+                                        size: 24,
+                                    }),
+                                ],
+                                heading: HeadingLevel.HEADING_2,
+                                spacing: { before: 200, after: 200 }
+                            }),
+                            new Paragraph({
+                                children: [
+                                    new TextRun({
+                                        text: "• Specialized in NIST framework compliance and implementation\n• Experience with vulnerability assessments and penetration testing\n• Disaster recovery planning and business continuity expertise\n• Network security architecture evaluation\n• Federal compliance and regulatory adherence (Military background)\n• Bug bounty research across state, federal, educational, and consumer applications",
+                                        size: 22,
+                                    }),
+                                ],
+                                spacing: { after: 200 }
+                            }),
+                            
+                            // Professional Experience
+                            new Paragraph({
+                                children: [
+                                    new TextRun({
+                                        text: "PROFESSIONAL EXPERIENCE",
+                                        bold: true,
+                                        size: 24,
+                                    }),
+                                ],
+                                heading: HeadingLevel.HEADING_2,
+                                spacing: { before: 200, after: 200 }
+                            }),
+                            
+                            // Plant Administrator
+                            new Paragraph({
+                                children: [
+                                    new TextRun({
+                                        text: "Plant Administrator | Mutual Materials, Gresham, OR",
+                                        bold: true,
+                                        size: 22,
+                                    }),
+                                ],
+                                spacing: { after: 100 }
+                            }),
+                            new Paragraph({
+                                children: [
+                                    new TextRun({
+                                        text: "April 2023 - Present",
+                                        italics: true,
+                                        size: 20,
+                                    }),
+                                ],
+                                spacing: { after: 100 }
+                            }),
+                            new Paragraph({
+                                children: [
+                                    new TextRun({
+                                        text: "• Verified and recorded daily production data accurately\n• Organized and managed filing systems for production reports, improving operational efficiency\n• Developed comprehensive budgeting tool for two manufacturing plants, optimizing budget management\n• Processed and created over 1,000 purchase orders, overseeing transactions totaling over $9 million\n• Served as member of safety committee, reviewing incidents and conducting safety briefs",
+                                        size: 20,
+                                    }),
+                                ],
+                                spacing: { after: 200 }
+                            }),
+                            
+                            // Cybersecurity Consultant
+                            new Paragraph({
+                                children: [
+                                    new TextRun({
+                                        text: "Cybersecurity Consultant | Freelance, Gresham, OR",
+                                        bold: true,
+                                        size: 22,
+                                    }),
+                                ],
+                                spacing: { after: 100 }
+                            }),
+                            new Paragraph({
+                                children: [
+                                    new TextRun({
+                                        text: "March 2019 - October 2022",
+                                        italics: true,
+                                        size: 20,
+                                    }),
+                                ],
+                                spacing: { after: 100 }
+                            }),
+                            new Paragraph({
+                                children: [
+                                    new TextRun({
+                                        text: "• Conducted in-depth security audits, assessing vulnerabilities for small to medium businesses\n• Developed and implemented disaster recovery plans based on NIST SP 800-34 guidelines\n• Evaluated network security architecture compliance with NIST standards\n• Assessed digital footprints of executive members for potential credential breaches\n• Presented on attack vectors to inform and equip network administrators against threats\n• Stayed updated on cybersecurity trends to emulate real-world attack scenarios",
+                                        size: 20,
+                                    }),
+                                ],
+                                spacing: { after: 200 }
+                            }),
+                            
+                            // Military Service
+                            new Paragraph({
+                                children: [
+                                    new TextRun({
+                                        text: "Administrative Manager, Corporal | US Marine Corps, Quantico, VA",
+                                        bold: true,
+                                        size: 22,
+                                    }),
+                                ],
+                                spacing: { after: 100 }
+                            }),
+                            new Paragraph({
+                                children: [
+                                    new TextRun({
+                                        text: "May 2017 - August 2018",
+                                        italics: true,
+                                        size: 20,
+                                    }),
+                                ],
+                                spacing: { after: 100 }
+                            }),
+                            new Paragraph({
+                                children: [
+                                    new TextRun({
+                                        text: "• Developed SOPs to ensure compliance with federal regulations\n• Created administrative processes to streamline operations and assign responsibilities\n• Trained and guided personnel, supporting over 300 multi-service members\n• Held roles as DTS Routing Official and Organizational Defense Travel Agent, processing over 7,500 authorizations and vouchers",
+                                        size: 20,
+                                    }),
+                                ],
+                                spacing: { after: 200 }
+                            }),
+                            
+                            // Education
+                            new Paragraph({
+                                children: [
+                                    new TextRun({
+                                        text: "EDUCATION",
+                                        bold: true,
+                                        size: 24,
+                                    }),
+                                ],
+                                heading: HeadingLevel.HEADING_2,
+                                spacing: { before: 200, after: 200 }
+                            }),
+                            new Paragraph({
+                                children: [
+                                    new TextRun({
+                                        text: "Associate of Applied Science in Cybersecurity Penetration Testing",
+                                        bold: true,
+                                        size: 22,
+                                    }),
+                                ],
+                                spacing: { after: 100 }
+                            }),
+                            new Paragraph({
+                                children: [
+                                    new TextRun({
+                                        text: "Mt. Hood Community College, Gresham, OR | September 2019 - December 2020",
+                                        italics: true,
+                                        size: 20,
+                                    }),
+                                ],
+                                spacing: { after: 100 }
+                            }),
+                            new Paragraph({
+                                children: [
+                                    new TextRun({
+                                        text: "Comprehensive curriculum covering network security, penetration testing methodologies, compliance frameworks, and hands-on security assessment techniques.",
+                                        size: 20,
+                                    }),
+                                ],
+                                spacing: { after: 200 }
+                            }),
+                            
+                            // Technical Skills
+                            new Paragraph({
+                                children: [
+                                    new TextRun({
+                                        text: "TECHNICAL SKILLS & EXPERTISE",
+                                        bold: true,
+                                        size: 24,
+                                    }),
+                                ],
+                                heading: HeadingLevel.HEADING_2,
+                                spacing: { before: 200, after: 200 }
+                            }),
+                            new Paragraph({
+                                children: [
+                                    new TextRun({
+                                        text: "Security Auditing:",
+                                        bold: true,
+                                        size: 22,
+                                    }),
+                                ],
+                                spacing: { after: 100 }
+                            }),
+                            new Paragraph({
+                                children: [
+                                    new TextRun({
+                                        text: "• Comprehensive security assessments and vulnerability analysis\n• NIST Cybersecurity Framework and SP 800-53 compliance\n• Disaster recovery planning (ISO 22301, NIST SP 800-34)\n• HIPAA, PCI DSS, SOX IT controls compliance",
+                                        size: 20,
+                                    }),
+                                ],
+                                spacing: { after: 150 }
+                            }),
+                            new Paragraph({
+                                children: [
+                                    new TextRun({
+                                        text: "Penetration Testing:",
+                                        bold: true,
+                                        size: 22,
+                                    }),
+                                ],
+                                spacing: { after: 100 }
+                            }),
+                            new Paragraph({
+                                children: [
+                                    new TextRun({
+                                        text: "• Wireless security assessment (WPA/WPA2 analysis)\n• Network protocol analysis using Wireshark\n• Social engineering awareness and phishing simulation\n• Vulnerability scanning and penetration testing coordination",
+                                        size: 20,
+                                    }),
+                                ],
+                                spacing: { after: 200 }
+                            }),
+                            
+                            // Footer
+                            new Paragraph({
+                                children: [
+                                    new TextRun({
+                                        text: `Resume generated on ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`,
+                                        size: 18,
+                                        color: "666666",
+                                    }),
+                                ],
+                                alignment: AlignmentType.CENTER,
+                                spacing: { before: 400 }
+                            }),
+                        ],
+                    }],
+                });
+                
+                // Generate and download the document
+                const blob = await Packer.toBlob(doc);
+                saveAs(blob, "Zayets_Cybersecurity_Resume.docx");
+                
+            } catch (error) {
+                console.error('Error generating DOCX:', error);
+                alert('There was an error generating the DOCX file. Please try the PDF option instead.');
+            }
         }
     </script>
 </body>
