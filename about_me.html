@@ -115,7 +115,7 @@
                 </button>
                 <div class="download-notes">
                     <p class="download-note"><strong>Resume View:</strong> Opens a printer-friendly resume in a new window. Use your browser's print function to save as PDF or print directly.</p>
-                    <p class="download-note"><strong>DOCX Download:</strong> Downloads a Microsoft Word compatible document that you can edit and customize.</p>
+                    <p class="download-note"><strong>DOCX Download:</strong> Downloads a Microsoft Word compatible document that you can edit and customize. Falls back to RTF format if needed.</p>
                 </div>
             </div>
         </section>
@@ -143,8 +143,8 @@
     </footer>
     
     <!-- Include docx library for DOCX generation -->
-    <script src="https://unpkg.com/docx@8.5.0/build/index.js"></script>
-    <script src="https://unpkg.com/file-saver@2.0.5/dist/FileSaver.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docx@7.8.2/build/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
     
     <script>
         function openResumeView() {
@@ -374,10 +374,36 @@
         }
         
         async function downloadResumeDocx() {
+            const button = document.getElementById('downloadDocxBtn');
+            const originalText = button.innerHTML;
+            
             try {
+                // Show loading state
+                button.disabled = true;
+                button.innerHTML = '<span class="download-icon">⏳</span>Generating DOCX...';
+                
+                // Wait a moment for libraries to load if needed
+                await new Promise(resolve => setTimeout(resolve, 500));
+                
                 // Check if docx library is loaded
-                if (typeof docx === 'undefined') {
-                    alert('DOCX library is still loading. Please try again in a moment.');
+                if (typeof docx === 'undefined' || typeof saveAs === 'undefined') {
+                    // Use RTF fallback instead
+                    button.innerHTML = '<span class="download-icon">📋</span>Using RTF format...';
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                    
+                    downloadResumeRTF();
+                    
+                    button.innerHTML = '<span class="download-icon">✅</span>RTF Downloaded!';
+                    setTimeout(() => {
+                        button.innerHTML = originalText;
+                        button.disabled = false;
+                    }, 2000);
+                    
+                    // Show info message
+                    setTimeout(() => {
+                        alert('Downloaded as RTF format instead of DOCX due to library loading issues.\n\nRTF files can be opened and edited in Microsoft Word, Google Docs, and other word processors.');
+                    }, 500);
+                    
                     return;
                 }
                 
@@ -685,10 +711,101 @@
                 const blob = await Packer.toBlob(doc);
                 saveAs(blob, "Zayets_Cybersecurity_Resume.docx");
                 
+                // Success - restore button
+                button.innerHTML = '<span class="download-icon">✅</span>Downloaded!';
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.disabled = false;
+                }, 2000);
+                
             } catch (error) {
                 console.error('Error generating DOCX:', error);
-                alert('There was an error generating the DOCX file. Please try the PDF option instead.');
+                
+                // Show user-friendly error message
+                const errorMsg = error.message || 'There was an error generating the DOCX file.';
+                alert(errorMsg + '\n\nAlternatively, you can use the "Open Resume View" option to print/save as PDF.');
+                
+                // Restore button
+                button.innerHTML = originalText;
+                button.disabled = false;
             }
+        }
+        
+        // Fallback function to generate RTF (Rich Text Format) which can be opened by Word
+        function downloadResumeRTF() {
+            const rtfContent = `{\\rtf1\\ansi\\deff0 {\\fonttbl {\\f0 Times New Roman;}{\\f1 Arial;}}\r
+{\\colortbl;\\red0\\green0\\blue0;}\r
+\\f0\\fs28\\qc\\b ZAYETS\\b0\\par\r
+\\fs22\\qc\\i Cybersecurity Consultant | Penetration Tester | Security Enthusiast\\i0\\par\r
+\\fs20\\qc Twitter: @zayets8 | GitHub: github.com/7a6179657473\\par\r
+\\par\r
+\\fs24\\b PROFESSIONAL SUMMARY\\b0\\par\r
+\\fs22 Dedicated cybersecurity professional with expertise in penetration testing, security auditing, and compliance management. Military background with experience spanning from administrative operations to private sector consulting. Brings a comprehensive approach to cybersecurity challenges with focus on strengthening security postures through thorough assessments, practical solutions, and knowledge transfer.\\par\r
+\\par\r
+\\fs24\\b KEY HIGHLIGHTS\\b0\\par\r
+\\fs22 \\u8226? Specialized in NIST framework compliance and implementation\\par\r
+\\u8226? Experience with vulnerability assessments and penetration testing\\par\r
+\\u8226? Disaster recovery planning and business continuity expertise\\par\r
+\\u8226? Network security architecture evaluation\\par\r
+\\u8226? Federal compliance and regulatory adherence (Military background)\\par\r
+\\u8226? Bug bounty research across state, federal, educational, and consumer applications\\par\r
+\\par\r
+\\fs24\\b PROFESSIONAL EXPERIENCE\\b0\\par\r
+\\par\r
+\\fs22\\b Plant Administrator | Mutual Materials, Gresham, OR\\b0\\par\r
+\\fs20\\i April 2023 - Present\\i0\\par\r
+\\u8226? Verified and recorded daily production data accurately\\par\r
+\\u8226? Organized and managed filing systems for production reports, improving operational efficiency\\par\r
+\\u8226? Developed comprehensive budgeting tool for two manufacturing plants, optimizing budget management\\par\r
+\\u8226? Processed and created over 1,000 purchase orders, overseeing transactions totaling over $9 million\\par\r
+\\u8226? Served as member of safety committee, reviewing incidents and conducting safety briefs\\par\r
+\\par\r
+\\fs22\\b Cybersecurity Consultant | Freelance, Gresham, OR\\b0\\par\r
+\\fs20\\i March 2019 - October 2022\\i0\\par\r
+\\u8226? Conducted in-depth security audits, assessing vulnerabilities for small to medium businesses\\par\r
+\\u8226? Developed and implemented disaster recovery plans based on NIST SP 800-34 guidelines\\par\r
+\\u8226? Evaluated network security architecture compliance with NIST standards\\par\r
+\\u8226? Assessed digital footprints of executive members for potential credential breaches\\par\r
+\\u8226? Presented on attack vectors to inform and equip network administrators against threats\\par\r
+\\u8226? Stayed updated on cybersecurity trends to emulate real-world attack scenarios\\par\r
+\\par\r
+\\fs22\\b Administrative Manager, Corporal | US Marine Corps, Quantico, VA\\b0\\par\r
+\\fs20\\i May 2017 - August 2018\\i0\\par\r
+\\u8226? Developed SOPs to ensure compliance with federal regulations\\par\r
+\\u8226? Created administrative processes to streamline operations and assign responsibilities\\par\r
+\\u8226? Trained and guided personnel, supporting over 300 multi-service members\\par\r
+\\u8226? Held roles as DTS Routing Official and Organizational Defense Travel Agent, processing over 7,500 authorizations and vouchers\\par\r
+\\par\r
+\\fs24\\b EDUCATION\\b0\\par\r
+\\fs22\\b Associate of Applied Science in Cybersecurity Penetration Testing\\b0\\par\r
+\\fs20\\i Mt. Hood Community College, Gresham, OR | September 2019 - December 2020\\i0\\par\r
+\\fs20 Comprehensive curriculum covering network security, penetration testing methodologies, compliance frameworks, and hands-on security assessment techniques.\\par\r
+\\par\r
+\\fs24\\b TECHNICAL SKILLS & EXPERTISE\\b0\\par\r
+\\fs22\\b Security Auditing:\\b0\\par\r
+\\u8226? Comprehensive security assessments and vulnerability analysis\\par\r
+\\u8226? NIST Cybersecurity Framework and SP 800-53 compliance\\par\r
+\\u8226? Disaster recovery planning (ISO 22301, NIST SP 800-34)\\par\r
+\\u8226? HIPAA, PCI DSS, SOX IT controls compliance\\par\r
+\\par\r
+\\fs22\\b Penetration Testing:\\b0\\par\r
+\\u8226? Wireless security assessment (WPA/WPA2 analysis)\\par\r
+\\u8226? Network protocol analysis using Wireshark\\par\r
+\\u8226? Social engineering awareness and phishing simulation\\par\r
+\\u8226? Vulnerability scanning and penetration testing coordination\\par\r
+\\par\r
+\\fs18\\qc\\cf1 Resume generated on ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}\\par\r
+}`;
+            
+            const blob = new Blob([rtfContent], { type: 'application/rtf' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Zayets_Cybersecurity_Resume.rtf';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
         }
     </script>
 </body>
