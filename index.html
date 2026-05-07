@@ -66,13 +66,17 @@
 
                 <div class="project-card">
                     <h3>AI Shelf Image Generation</h3>
-                    <p>An AI pipeline that generates variable-dimension product images of industrial shelving units for manufacturing catalog use. Built on a Dockerized Stable Diffusion stack with custom LoRA training, running on an RTX 5080 with a custom CUDA 12.8 build. Several environment and dependency issues were identified and resolved during setup. Claude was used for build optimization, project structure definition, and maintaining a live progress tracker for client-facing documentation and updates.</p>
+                    <p>An end-to-end AI pipeline for generating consistent, variable-dimension product images of industrial shelving units for manufacturing catalog use. Progressed through six LoRA versions across SD 1.5, Realistic Vision V6, and Juggernaut XL base models — resolving 18 production errors spanning CUDA architecture conflicts, dependency breakage, caption quality, VRAM constraints, and model compatibility. Implemented rembg background removal as a parallel post-processing track. Expanded training dataset from 37 to 92+ images with structured natural language captions and synthetic augmentation. Claude AI was used for build optimization, pipeline structure, and maintaining a live project tracker for client-facing progress documentation.</p>
                     <div class="project-tags">
                         <span>Python</span>
                         <span>Stable Diffusion</span>
+                        <span>SDXL</span>
                         <span>LoRA</span>
                         <span>Docker</span>
-                        <span>CUDA</span>
+                        <span>CUDA 12.8</span>
+                        <span>PyTorch</span>
+                        <span>Kohya_ss</span>
+                        <span>rembg</span>
                         <span>AI/ML</span>
                         <span>Claude AI</span>
                     </div>
