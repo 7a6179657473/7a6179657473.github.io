@@ -32,11 +32,18 @@
             <div class="projects-grid">
 
                 <div class="project-card">
-                    <h3>H1 Hactivity Monitor</h3>
-                    <p>A tool to monitor the latest publicly disclosed security reports from HackerOne, providing real-time insights into new vulnerabilities.</p>
+                    <h3>H1 Hactivity Monitor / Bug Bounty Monitor</h3>
+                    <p>A two-tool Python suite for bug bounty reconnaissance and intelligence. The H1 Hactivity Monitor pulls real-time publicly disclosed vulnerability reports from HackerOne via API. Extended into the Bug Bounty Monitor — a full automated recon pipeline using subfinder, httpx, and ProjectDiscovery notify on a systemd timer. Scans in-scope targets every 4 hours, diffs results against saved baselines, and pushes categorized change alerts (new/offline subdomains, new/gone services) to Discord. Includes overlap prevention via flock, automatic state archiving, and hardened systemd service unit with filesystem and privilege restrictions.</p>
                     <div class="project-tags">
                         <span>Python</span>
+                        <span>Bash</span>
                         <span>API</span>
+                        <span>Automation</span>
+                        <span>Recon</span>
+                        <span>subfinder</span>
+                        <span>httpx</span>
+                        <span>systemd</span>
+                        <span>Bug Bounty</span>
                         <span>Security</span>
                     </div>
                     <a href="https://github.com/7a6179657473/H1_HACTIVITY_MONITOR" class="project-link" target="_blank" rel="noopener noreferrer">View on GitHub</a>
@@ -66,7 +73,7 @@
 
                 <div class="project-card">
                     <h3>AI Shelf Image Generation</h3>
-                    <p>An end-to-end AI pipeline for generating consistent, variable-dimension product images of industrial shelving units for manufacturing catalog use. Progressed through six LoRA versions across SD 1.5, Realistic Vision V6, and Juggernaut XL base models — resolving 18 production errors spanning CUDA architecture conflicts, dependency breakage, caption quality, VRAM constraints, and model compatibility. Implemented rembg background removal as a parallel post-processing track. Expanded training dataset from 37 to 92+ images with structured natural language captions and synthetic augmentation. Claude AI was used for build optimization, pipeline structure, and maintaining a live project tracker for client-facing progress documentation.</p>
+                    <p>A Dockerized LoRA training pipeline for generating consistent industrial shelving unit product images. Progressed through six model versions across SD 1.5, Realistic Vision, and Juggernaut XL — resolving 18 production errors including CUDA sm_120 architecture conflicts, dependency breakage, and VRAM constraints. Includes rembg background removal as a post-processing track. Claude AI used for build optimization and client-facing project documentation.</p>
                     <div class="project-tags">
                         <span>Python</span>
                         <span>Stable Diffusion</span>
