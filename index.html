@@ -1,101 +1,1090 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zayets - Cybersecurity Portfolio</title>
-    <meta name="description" content="A portfolio showcasing cybersecurity projects by Zayets, a security consultant and penetration tester.">
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Cybersecurity professional specializing in penetration testing, security automation, and network analysis.">
+<title>ZAYETS — Cybersecurity Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #0a0c0f;
+    --bg2:       #0f1318;
+    --bg3:       #141820;
+    --surface:   #1a1f2e;
+    --border:    #232a38;
+    --border2:   #2e3a50;
+    --accent:    #4af0c4;
+    --accent2:   #1fc99a;
+    --accent-dim:#0a3d2e;
+    --red:       #f05060;
+    --amber:     #f0a030;
+    --text:      #e8edf5;
+    --muted:     #6b7a90;
+    --muted2:    #8a9ab0;
+    --mono:      'Space Mono', monospace;
+    --sans:      'Syne', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3rem;
+    height: 64px;
+    background: rgba(10,12,15,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-decoration: none;
+  }
+
+  .nav-logo span {
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    color: var(--muted2);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 3rem;
+    padding-top: 64px;
+    overflow: hidden;
+  }
+
+  .hero-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(74,240,196,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(74,240,196,0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
+  }
+
+  .hero-glow {
+    position: absolute;
+    top: 20%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(74,240,196,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    max-width: 900px;
+  }
+
+  .hero-label {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-label::before {
+    content: '';
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .hero-name {
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    margin-bottom: 0.25rem;
+  }
+
+  .hero-name .accent-word {
+    color: var(--accent);
+    display: block;
+  }
+
+  .hero-title {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    margin-top: 1.5rem;
+    margin-bottom: 1.75rem;
+    text-transform: uppercase;
+  }
+
+  .hero-summary {
+    font-size: 1.05rem;
+    color: var(--muted2);
+    max-width: 560px;
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-summary strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--accent);
+    border: none;
+    padding: 0.85rem 2rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover { background: var(--accent2); transform: translateY(-1px); }
+
+  .btn-ghost {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted2);
+    background: transparent;
+    border: 1px solid var(--border2);
+    padding: 0.85rem 2rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: border-color 0.2s, color 0.2s, transform 0.15s;
+  }
+
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 3rem;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-scroll::after {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 1px;
+    background: var(--muted);
+    animation: scrollline 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollline {
+    0%, 100% { opacity: 0.3; transform: scaleX(0.5); }
+    50% { opacity: 1; transform: scaleX(1); }
+  }
+
+  /* ── SKILLS STRIP ── */
+  .skills-strip {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg2);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .skills-strip-inner {
+    display: flex;
+    padding: 0 3rem;
+    gap: 0;
+  }
+
+  .skill-chip {
+    flex: 1;
+    padding: 1.25rem 1.5rem;
+    border-right: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-width: 0;
+  }
+
+  .skill-chip:last-child { border-right: none; }
+
+  .skill-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .skill-chip-text {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted2);
+    white-space: nowrap;
+  }
+
+  /* ── SECTION SHARED ── */
+  section {
+    position: relative;
+    padding: 6rem 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 3.5rem;
+    color: var(--text);
+  }
+
+  /* ── PROJECTS ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .project-card {
+    background: var(--bg);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.25s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-card:hover { background: var(--bg2); }
+
+  .project-card.featured {
+    grid-column: span 2;
+    background: var(--bg2);
+  }
+
+  .project-card.featured:hover { background: var(--bg3); }
+
+  .project-num {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    margin-bottom: 1.25rem;
+  }
+
+  .project-name {
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 0.25rem;
+  }
+
+  .project-sub {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+    letter-spacing: 0.05em;
+  }
+
+  .project-desc {
+    font-size: 0.9rem;
+    color: var(--muted2);
+    line-height: 1.7;
+    flex: 1;
+    margin-bottom: 1.75rem;
+  }
+
+  .project-desc strong { color: var(--text); font-weight: 600; }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .tag {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    padding: 0.3rem 0.6rem;
+    border: 1px solid var(--border2);
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .tag.accent { border-color: var(--accent-dim); color: var(--accent); }
+
+  .project-link {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: gap 0.2s;
+    align-self: flex-start;
+    margin-top: auto;
+  }
+
+  .project-link:hover { gap: 0.7rem; }
+
+  .project-accent-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .project-card:hover .project-accent-bar { transform: scaleX(1); }
+
+  /* featured layout */
+  .featured-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .featured-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 1rem;
+  }
+
+  .stat-box {
+    background: var(--bg3);
+    padding: 1.25rem;
+  }
+
+  .stat-num {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  /* ── SKILLS SECTION ── */
+  .skills-section { background: var(--bg2); }
+
+  .skills-section section { max-width: 1200px; }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .skill-block {
+    background: var(--bg2);
+    padding: 2rem;
+  }
+
+  .skill-block-title {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .skill-block-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border2);
+  }
+
+  .skill-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .skill-list li {
+    font-size: 0.88rem;
+    color: var(--muted2);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .skill-list li::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    background: var(--border2);
+    flex-shrink: 0;
+  }
+
+  /* ── CONTACT ── */
+  .contact-wrap {
+    border: 1px solid var(--border);
+    background: var(--bg2);
+    padding: 3.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .contact-heading {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  .contact-heading .dim { color: var(--muted); }
+
+  .contact-sub {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--muted2);
+    line-height: 1.7;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+    color: var(--text);
+  }
+
+  .contact-link:hover { border-color: var(--accent); background: var(--bg3); }
+
+  .contact-link-icon {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    text-transform: uppercase;
+    min-width: 52px;
+  }
+
+  .contact-link-val {
+    font-size: 0.9rem;
+    color: var(--muted2);
+  }
+
+  .contact-link-arrow {
+    margin-left: auto;
+    color: var(--muted);
+    font-size: 1rem;
+    transition: transform 0.2s, color 0.2s;
+  }
+
+  .contact-link:hover .contact-link-arrow { transform: translateX(4px); color: var(--accent); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg2);
+  }
+
+  .footer-copy {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .footer-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* ── DIVIDER ── */
+  .full-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0;
+  }
+
+  /* ── ANIMATE IN ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .fade-up:nth-child(2) { transition-delay: 0.1s; }
+  .fade-up:nth-child(3) { transition-delay: 0.2s; }
+  .fade-up:nth-child(4) { transition-delay: 0.3s; }
+
+  /* PAGE TRANSITION OVERLAY */
+  #page-transition {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .pt-slice {
+    background: var(--bg);
+    transform: scaleY(1);
+    transform-origin: top;
+    transition: transform 0.55s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+  .pt-slice:nth-child(1) { transition-delay: 0.00s; }
+  .pt-slice:nth-child(2) { transition-delay: 0.06s; }
+  .pt-slice:nth-child(3) { transition-delay: 0.12s; }
+  .pt-slice:nth-child(4) { transition-delay: 0.18s; }
+  .pt-slice:nth-child(5) { transition-delay: 0.24s; }
+  .pt-slice:nth-child(6) { transition-delay: 0.30s; }
+  #page-transition.leaving .pt-slice  { transform: scaleY(1); transform-origin: top; }
+  #page-transition.gone .pt-slice     { transform: scaleY(0); transform-origin: bottom; }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 1.5rem; }
+    .hero { padding: 0 1.5rem; padding-top: 64px; }
+    .hero-name { font-size: 3rem; }
+    .skills-strip-inner { padding: 0 1.5rem; overflow-x: auto; }
+    section { padding: 4rem 1.5rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card.featured { grid-column: span 1; }
+    .featured-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .contact-wrap { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="navbar-brand">
-            <a href="index.html">ZAYETS</a>
+
+<!-- PAGE TRANSITION OVERLAY -->
+<div id="page-transition">
+  <div class="pt-slice"></div>
+  <div class="pt-slice"></div>
+  <div class="pt-slice"></div>
+  <div class="pt-slice"></div>
+  <div class="pt-slice"></div>
+  <div class="pt-slice"></div>
+</div>
+
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#top">ZAYETS <span>// portfolio</span></a>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="resume.html">Resume</a></li>
+    <li><a href="https://github.com/7a6179657473" target="_blank" rel="noopener">GitHub ↗</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="top">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <p class="hero-label">Cybersecurity &amp; Security Automation</p>
+    <h1 class="hero-name">
+      Security
+      <span class="accent-word">First.</span>
+    </h1>
+    <p class="hero-title">Cybersecurity Professional &amp; Developer</p>
+    <p class="hero-summary">
+      Penetration tester, security auditor, and automation builder with a background spanning
+      <strong>vulnerability assessment</strong>, <strong>network analysis</strong>, and
+      <strong>threat mitigation</strong>. Former U.S. Marine. Freelance consultant.
+      Builder of tools that do the watching so you don't have to.
+    </p>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn-primary">View Projects →</a>
+      <a href="resume.html" class="btn-ghost">Resume</a>
+      <a href="https://github.com/7a6179657473" target="_blank" rel="noopener" class="btn-ghost">GitHub ↗</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</div>
+
+<!-- SKILLS STRIP -->
+<div class="skills-strip">
+  <div class="skills-strip-inner">
+    <div class="skill-chip"><div class="skill-dot"></div><span class="skill-chip-text">Penetration Testing</span></div>
+    <div class="skill-chip"><div class="skill-dot"></div><span class="skill-chip-text">Vulnerability Assessment</span></div>
+    <div class="skill-chip"><div class="skill-dot"></div><span class="skill-chip-text">Network Security</span></div>
+    <div class="skill-chip"><div class="skill-dot"></div><span class="skill-chip-text">Security Automation</span></div>
+    <div class="skill-chip"><div class="skill-dot"></div><span class="skill-chip-text">Bug Bounty Recon</span></div>
+    <div class="skill-chip"><div class="skill-dot"></div><span class="skill-chip-text">NIST / MITRE ATT&CK</span></div>
+    <div class="skill-chip"><div class="skill-dot"></div><span class="skill-chip-text">Wireless Analysis</span></div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<div id="projects">
+<section>
+  <p class="section-label">Work</p>
+  <h2 class="section-title">Projects</h2>
+
+  <div class="projects-grid">
+
+    <!-- FEATURED: Bug Bounty Monitor -->
+    <div class="project-card featured fade-up">
+      <div class="project-accent-bar"></div>
+      <div class="featured-inner">
+        <div>
+          <p class="project-num">01 — Featured</p>
+          <h3 class="project-name">H1 Hactivity Monitor</h3>
+          <p class="project-sub">Bug Bounty Recon Pipeline</p>
+          <p class="project-desc">
+            A two-tool Python recon suite built for continuous bug bounty operations.
+            The <strong>H1 Hactivity Monitor</strong> polls the HackerOne API in real time,
+            surfacing newly disclosed vulnerability reports as they go public.
+            Extended into a full <strong>automated recon pipeline</strong> — subfinder enumerates
+            subdomains, httpx probes live hosts, and ProjectDiscovery notify pushes
+            categorized asset-change alerts to Discord every 4 hours.
+            Diffs results against saved baselines to surface only what actually changed:
+            new subdomains, services appearing or disappearing, scope shifts.
+          </p>
+          <p class="project-desc">
+            Engineered for <strong>reliability</strong>: flock-based locking prevents overlapping runs,
+            automatic state archiving preserves baseline history, and the systemd unit
+            applies filesystem sandboxing and privilege restrictions — minimizing attack
+            surface on the host itself.
+          </p>
+          <div class="project-tags">
+            <span class="tag accent">Python</span>
+            <span class="tag accent">Bash</span>
+            <span class="tag">HackerOne API</span>
+            <span class="tag">subfinder</span>
+            <span class="tag">httpx</span>
+            <span class="tag">systemd</span>
+            <span class="tag">Discord Notify</span>
+            <span class="tag">Security Automation</span>
+          </div>
+          <a href="https://github.com/7a6179657473/H1_HACTIVITY_MONITOR" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
         </div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="resume.html">Resume</a></li>
-            <li><a href="https://github.com/7a6179657473" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-        </ul>
-    </nav>
-
-    <header class="hero">
-        <div class="hero-content">
-            <h1>Cybersecurity Professional & Developer</h1>
-            <p class="subtitle">Specializing in security automation, network analysis, and web security.</p>
-        </div>
-    </header>
-
-    <main class="container">
-        <section id="projects" class="projects-section">
-            <h2>Featured Projects</h2>
-            <div class="projects-grid">
-
-                <div class="project-card">
-                    <h3>H1 Hactivity Monitor / Bug Bounty Monitor</h3>
-                    <p>A two-tool Python suite for bug bounty reconnaissance and intelligence. The H1 Hactivity Monitor pulls real-time publicly disclosed vulnerability reports from HackerOne via API. Extended into the Bug Bounty Monitor — a full automated recon pipeline using subfinder, httpx, and ProjectDiscovery notify on a systemd timer. Scans in-scope targets every 4 hours, diffs results against saved baselines, and pushes categorized change alerts (new/offline subdomains, new/gone services) to Discord. Includes overlap prevention via flock, automatic state archiving, and hardened systemd service unit with filesystem and privilege restrictions.</p>
-                    <div class="project-tags">
-                        <span>Python</span>
-                        <span>Bash</span>
-                        <span>API</span>
-                        <span>Automation</span>
-                        <span>Recon</span>
-                        <span>subfinder</span>
-                        <span>httpx</span>
-                        <span>systemd</span>
-                        <span>Bug Bounty</span>
-                        <span>Security</span>
-                    </div>
-                    <a href="https://github.com/7a6179657473/H1_HACTIVITY_MONITOR" class="project-link" target="_blank" rel="noopener noreferrer">View on GitHub</a>
-                </div>
-
-                <div class="project-card">
-                    <h3>Webscrape</h3>
-                    <p>A comprehensive web scraping utility to extract links and email addresses from web pages, supporting both single-page and deep crawling.</p>
-                    <div class="project-tags">
-                        <span>Python</span>
-                        <span>BeautifulSoup4</span>
-                        <span>Requests</span>
-                    </div>
-                    <a href="https://github.com/7a6179657473/Webscrape" class="project-link" target="_blank" rel="noopener noreferrer">View on GitHub</a>
-                </div>
-
-                <div class="project-card">
-                    <h3>Network Monitor</h3>
-                    <p>A PowerShell solution for Windows to monitor active connections, processes, and listening ports for security analysis and threat detection.</p>
-                    <div class="project-tags">
-                        <span>PowerShell</span>
-                        <span>Windows</span>
-                        <span>Networking</span>
-                    </div>
-                    <a href="https://github.com/7a6179657473/network-monitor" class="project-link" target="_blank" rel="noopener noreferrer">View on GitHub</a>
-                </div>
-
-                <div class="project-card">
-                    <h3>AI Shelf Image Generation</h3>
-                    <p>A Dockerized LoRA training pipeline for generating consistent industrial shelving unit product images. Progressed through six model versions across SD 1.5, Realistic Vision, and Juggernaut XL — resolving 18 production errors including CUDA sm_120 architecture conflicts, dependency breakage, and VRAM constraints. Includes rembg background removal as a post-processing track. Claude AI used for build optimization and client-facing project documentation.</p>
-                    <div class="project-tags">
-                        <span>Python</span>
-                        <span>Stable Diffusion</span>
-                        <span>SDXL</span>
-                        <span>LoRA</span>
-                        <span>Docker</span>
-                        <span>CUDA 12.8</span>
-                        <span>PyTorch</span>
-                        <span>Kohya_ss</span>
-                        <span>rembg</span>
-                        <span>AI/ML</span>
-                        <span>Claude AI</span>
-                    </div>
-                </div>
-
+        <div>
+          <div class="featured-stats">
+            <div class="stat-box">
+              <div class="stat-num">4h</div>
+              <div class="stat-label">Scan interval</div>
             </div>
-        </section>
-    </main>
+            <div class="stat-box">
+              <div class="stat-num">2</div>
+              <div class="stat-label">Integrated tools</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-num">∞</div>
+              <div class="stat-label">Targets monitored</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-num">0</div>
+              <div class="stat-label">Overlap runs</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <footer class="footer">
-        <p>&copy; 2026 Zayets. All rights reserved.</p>
-    </footer>
+    <!-- Seenya -->
+    <div class="project-card fade-up">
+      <div class="project-accent-bar"></div>
+      <p class="project-num">02</p>
+      <h3 class="project-name">Seenya</h3>
+      <p class="project-sub">Wireless Device Detection Platform</p>
+      <p class="project-desc">
+        Full-stack wireless MAC address scanner and monitoring platform.
+        Python Flask backend uses <strong>Scapy</strong> for real-time packet capture;
+        Angular Material frontend delivers a live device feed via WebSocket.
+        Performs <strong>OUI-based device type identification</strong>, tracks signal strength,
+        packet counts, and first/last-seen timestamps — building a persistent
+        picture of every device within wireless range.
+      </p>
+      <p class="project-desc">
+        Designed with a phased roadmap: database logging and alerting on unknown
+        devices in Phase 2, with hardware deployment to <strong>Hak5 Pineapple</strong> and
+        Raspberry Pi in Phase 4.
+      </p>
+      <div class="project-tags">
+        <span class="tag accent">Python</span>
+        <span class="tag accent">Scapy</span>
+        <span class="tag">Flask</span>
+        <span class="tag">Angular</span>
+        <span class="tag">WebSocket</span>
+        <span class="tag">OUI Lookup</span>
+        <span class="tag">Wireless Security</span>
+      </div>
+      <a href="https://github.com/7a6179657473/Seenya" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
+    </div>
+
+    <!-- AI Pipeline -->
+    <div class="project-card fade-up">
+      <div class="project-accent-bar"></div>
+      <p class="project-num">03</p>
+      <h3 class="project-name">AI Image Generation Pipeline</h3>
+      <p class="project-sub">LoRA Training · Docker · FLUX.1 Dev</p>
+      <p class="project-desc">
+        Sole project manager and hands-on operator of a multi-phase AI image
+        generation pipeline targeting industrial product photography.
+        Manually deployed and operated a <strong>Dockerized environment</strong> on an
+        RTX 5080 (Blackwell sm_120), resolving 29 documented build and training errors.
+        Iterated across eight LoRA versions spanning three model architectures before
+        executing a strategic pivot to <strong>FLUX.1 Dev</strong> via ComfyUI and ai-toolkit
+        — resolving structural control and fine-detail rendering blockers that
+        persisted across all SDXL runs. Coordinated progress with two external
+        contractors through regular structured meetings.
+      </p>
+      <div class="project-tags">
+        <span class="tag accent">Python</span>
+        <span class="tag accent">Docker</span>
+        <span class="tag">FLUX.1 Dev</span>
+        <span class="tag">Kohya_ss</span>
+        <span class="tag">ComfyUI</span>
+        <span class="tag">PyTorch</span>
+        <span class="tag">CUDA 12.8</span>
+        <span class="tag">rembg</span>
+      </div>
+      <a href="https://github.com/7a6179657473" target="_blank" rel="noopener" class="project-link">View Profile →</a>
+    </div>
+
+  </div>
+</section>
+</div>
+
+<hr class="full-divider">
+
+<!-- SKILLS -->
+<div class="skills-section" id="skills">
+<section>
+  <p class="section-label">Expertise</p>
+  <h2 class="section-title">Technical Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-block">
+      <p class="skill-block-title">Security Tools</p>
+      <ul class="skill-list">
+        <li>Burp Suite</li>
+        <li>Nmap</li>
+        <li>Wireshark</li>
+        <li>Metasploit</li>
+        <li>Hashcat</li>
+        <li>Scapy</li>
+      </ul>
+    </div>
+    <div class="skill-block">
+      <p class="skill-block-title">Languages &amp; Scripting</p>
+      <ul class="skill-list">
+        <li>Python</li>
+        <li>PowerShell</li>
+        <li>Bash</li>
+        <li>TypeScript</li>
+      </ul>
+    </div>
+    <div class="skill-block">
+      <p class="skill-block-title">Frameworks &amp; Standards</p>
+      <ul class="skill-list">
+        <li>NIST CSF</li>
+        <li>MITRE ATT&amp;CK</li>
+        <li>OWASP</li>
+      </ul>
+    </div>
+    <div class="skill-block">
+      <p class="skill-block-title">Platforms &amp; Infra</p>
+      <ul class="skill-list">
+        <li>Windows / Linux (Ubuntu)</li>
+        <li>WSL2</li>
+        <li>Docker</li>
+        <li>systemd</li>
+      </ul>
+    </div>
+    <div class="skill-block">
+      <p class="skill-block-title">CTF / Bug Bounty</p>
+      <ul class="skill-list">
+        <li>HackTheBox</li>
+        <li>TryHackMe</li>
+        <li>PicoCTF</li>
+        <li>HackerOne</li>
+        <li>Bugcrowd</li>
+        <li>VulnHub</li>
+      </ul>
+    </div>
+    <div class="skill-block">
+      <p class="skill-block-title">Security Domains</p>
+      <ul class="skill-list">
+        <li>Penetration Testing</li>
+        <li>Vulnerability Assessment</li>
+        <li>Threat Detection</li>
+        <li>Incident Response</li>
+        <li>Wireless Security</li>
+        <li>Disaster Recovery</li>
+      </ul>
+    </div>
+  </div>
+</section>
+</div>
+
+<hr class="full-divider">
+
+<!-- CONTACT -->
+<section>
+  <p class="section-label">Contact</p>
+  <div class="contact-wrap">
+    <div>
+      <h2 class="contact-heading">
+        Let's work<br>
+        <span class="dim">together.</span>
+      </h2>
+      <p class="contact-sub">
+        Available for security consulting, penetration testing engagements,
+        and freelance security automation work.
+      </p>
+    </div>
+    <div class="contact-links">
+      <a href="https://github.com/7a6179657473" target="_blank" rel="noopener" class="contact-link">
+        <span class="contact-link-icon">GitHub</span>
+        <span class="contact-link-val">github.com/7a6179657473</span>
+        <span class="contact-link-arrow">→</span>
+      </a>
+      <a href="resume.html" class="contact-link">
+        <span class="contact-link-icon">Resume</span>
+        <span class="contact-link-val">View full resume</span>
+        <span class="contact-link-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-copy">© 2026 ZAYETS</span>
+  <div class="footer-status">
+    <div class="status-dot"></div>
+    Available for engagements
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Page transition
+  const overlay = document.getElementById('page-transition');
+
+  function transitionOut(href) {
+    overlay.style.pointerEvents = 'all';
+    // reset slices to top origin + full height first
+    overlay.querySelectorAll('.pt-slice').forEach(s => {
+      s.style.transformOrigin = 'top';
+      s.style.transform = 'scaleY(0)';
+      s.style.transition = 'none';
+    });
+    // force reflow
+    overlay.offsetHeight;
+    // animate in
+    overlay.querySelectorAll('.pt-slice').forEach((s, i) => {
+      s.style.transition = 'transform 0.45s cubic-bezier(0.76, 0, 0.24, 1)';
+      s.style.transitionDelay = (i * 0.055) + 's';
+      s.style.transform = 'scaleY(1)';
+    });
+    setTimeout(() => { window.location.href = href; }, 650);
+  }
+
+  function transitionIn() {
+    // slices start at scaleY(1), retract downward
+    overlay.querySelectorAll('.pt-slice').forEach(s => {
+      s.style.transformOrigin = 'bottom';
+      s.style.transform = 'scaleY(1)';
+      s.style.transition = 'none';
+    });
+    overlay.offsetHeight;
+    overlay.querySelectorAll('.pt-slice').forEach((s, i) => {
+      s.style.transition = 'transform 0.55s cubic-bezier(0.76, 0, 0.24, 1)';
+      s.style.transitionDelay = (i * 0.06) + 's';
+      s.style.transform = 'scaleY(0)';
+    });
+    setTimeout(() => { overlay.style.pointerEvents = 'none'; }, 900);
+  }
+
+  // Intercept internal links for transition
+  document.querySelectorAll('a[href]').forEach(link => {
+    const href = link.getAttribute('href');
+    if (!href || href.startsWith('http') || href.startsWith('#') || href.startsWith('mailto')) return;
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      transitionOut(href);
+    });
+  });
+
+  // Run entrance animation on load
+  window.addEventListener('load', transitionIn);
+</script>
 </body>
 </html>
-##Hello!

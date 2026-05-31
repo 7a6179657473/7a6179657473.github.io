@@ -1,130 +1,744 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zayets - Resume</title>
-    <meta name="description" content="Resume for Zayets, a cybersecurity consultant and penetration tester.">
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resume — ZAYETS Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #0a0c0f;
+    --bg2:       #0f1318;
+    --bg3:       #141820;
+    --surface:   #1a1f2e;
+    --border:    #232a38;
+    --border2:   #2e3a50;
+    --accent:    #4af0c4;
+    --accent2:   #1fc99a;
+    --accent-dim:#0a3d2e;
+    --text:      #e8edf5;
+    --muted:     #6b7a90;
+    --muted2:    #8a9ab0;
+    --mono:      'Space Mono', monospace;
+    --sans:      'Syne', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+  }
+
+  /* PAGE TRANSITION */
+  #page-transition {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .pt-slice {
+    background: var(--bg);
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3rem;
+    height: 64px;
+    background: rgba(10,12,15,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--muted); font-weight: 400; }
+
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    color: var(--muted2);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+
+  /* LAYOUT */
+  .page-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 120px 3rem 6rem;
+    position: relative;
+  }
+
+  /* PAGE HEADER */
+  .resume-header {
+    margin-bottom: 4rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: end;
+  }
+
+  .resume-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .resume-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .resume-name {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--text);
+  }
+
+  .resume-title {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-top: 1rem;
+  }
+
+  .resume-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    align-items: flex-end;
+  }
+
+  .resume-contact a, .resume-contact span {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    color: var(--muted2);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .resume-contact a:hover { color: var(--accent); }
+
+  /* SECTION */
+  .r-section { margin-bottom: 3rem; }
+
+  .r-section-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .r-section-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .r-section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* SUMMARY */
+  .r-summary {
+    font-size: 0.92rem;
+    color: var(--muted2);
+    line-height: 1.8;
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    background: var(--bg2);
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .skill-row {
+    background: var(--bg2);
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    gap: 1rem;
+    align-items: baseline;
+  }
+
+  .skill-label {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    text-transform: uppercase;
+    min-width: 140px;
+    flex-shrink: 0;
+  }
+
+  .skill-value {
+    font-size: 0.82rem;
+    color: var(--muted2);
+    line-height: 1.5;
+  }
+
+  /* JOB ENTRY */
+  .job { margin-bottom: 2.25rem; }
+  .job:last-child { margin-bottom: 0; }
+
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 0.2rem;
+    flex-wrap: wrap;
+  }
+
+  .job-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+
+  .job-dates {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .job-org {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    color: var(--accent2);
+    margin-bottom: 0.85rem;
+  }
+
+  .job-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    padding-left: 1rem;
+    border-left: 1px solid var(--border2);
+  }
+
+  .job-bullets li {
+    font-size: 0.86rem;
+    color: var(--muted2);
+    line-height: 1.65;
+    position: relative;
+    padding-left: 0.85rem;
+  }
+
+  .job-bullets li::before {
+    content: '–';
+    position: absolute;
+    left: -0.1rem;
+    color: var(--accent);
+    font-family: var(--mono);
+  }
+
+  /* PROJECT ENTRY */
+  .project-entry {
+    border: 1px solid var(--border);
+    background: var(--bg2);
+    padding: 1.5rem;
+    margin-bottom: 1px;
+  }
+
+  .project-entry:last-child { margin-bottom: 0; }
+
+  .project-entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 0.2rem;
+    flex-wrap: wrap;
+  }
+
+  .project-entry-name {
+    font-size: 0.96rem;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+
+  .project-entry-sub {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    color: var(--accent2);
+    margin-bottom: 0.85rem;
+  }
+
+  .project-entry-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .project-entry-bullets li {
+    font-size: 0.84rem;
+    color: var(--muted2);
+    line-height: 1.65;
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .project-entry-bullets li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-family: var(--mono);
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .tag {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+    padding: 0.25rem 0.55rem;
+    border: 1px solid var(--border2);
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .tag.a { border-color: var(--accent-dim); color: var(--accent); }
+
+  /* EDUCATION */
+  .edu-block {
+    border-left: 2px solid var(--accent);
+    padding: 1rem 1.5rem;
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .edu-degree { font-size: 0.96rem; font-weight: 700; color: var(--text); }
+  .edu-school {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    color: var(--accent2);
+    margin-top: 0.25rem;
+  }
+  .edu-dates {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    margin-top: 0.15rem;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg2);
+    position: relative;
+  }
+
+  .footer-copy {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .footer-back {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    color: var(--muted2);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .footer-back:hover { color: var(--accent); }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 1.5rem; }
+    .page-wrap { padding: 100px 1.5rem 4rem; }
+    .resume-header { grid-template-columns: 1fr; }
+    .resume-contact { align-items: flex-start; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .job-header { flex-direction: column; gap: 0.2rem; }
+    footer { flex-direction: column; gap: 1rem; }
+  }
+</style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="navbar-brand">
-            <a href="index.html">ZAYETS</a>
-        </div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="resume.html">Resume</a></li>
-            <li><a href="https://github.com/7a6179657473" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-        </ul>
-    </nav>
 
-    <main class="container">
-        <section class="section experience">
-            <h2>Experience</h2>
-            <article class="experience-item">
-                <h3>Plant Administrator</h3>
-                <p class="job-details">**********, Gresham, OR | April 2023 - September 2025</p>
-                <ul class="job-responsibilities">
-                    <li>Verified and recorded daily production data accurately</li>
-                    <li>Organized and managed filing systems for production reports, improving operational efficiency</li>
-                    <li>Collaborated with accounts payable to resolve purchase order discrepancies</li>
-                    <li>Monitored production schedules and inventory levels</li>
-                    <li>Managed raw material procurement and maintained vendor relationships</li>
-                    <li>Developed a comprehensive budgeting tool for two manufacturing plants, optimizing budget management</li>
-                    <li>Processed and created over 1,000 purchase orders, overseeing transactions totaling over $9 million</li>
-                    <li>Served as a member of the safety committee, reviewing safety incidents and conducting safety briefs for respective departments</li>
-                </ul>
-            </article>
-            
-            <article class="experience-item">
-                <h3>Cybersecurity Consultant</h3>
-                <p class="job-details">Freelance, Gresham, OR | March 2019 - October 2022</p>
-                <ul class="job-responsibilities">
-                    <li>Conducted in-depth security audits, assessing vulnerabilities for small to medium businesses</li>
-                    <li>Developed and implemented disaster recovery plans</li>
-                    <li>Evaluated network security architecture compliance with NIST standards</li>
-                    <li>Assessed digital footprints of executive members for potential credential breaches</li>
-                    <li>Presented on attack vectors to inform and equip network administrators against potential threats</li>
-                    <li>Stayed updated on cybersecurity trends to emulate real-world attack scenarios</li>
-                </ul>
-            </article>
-            
-            <article class="experience-item">
-                <h3>IT Security Consultant</h3>
-                <p class="job-details">Non-Profit, Contract, Clackamas, OR | July 2021 - October 2021</p>
-                <ul class="job-responsibilities">
-                    <li>Assessed security controls, including firewalls and VPNs</li>
-                    <li>Conducted a comprehensive IT security audit, identifying new risks</li>
-                    <li>Collaborated with IT teams to enhance the organization's security posture</li>
-                    <li>Prepared detailed reports based on vulnerability findings for leadership</li>
-                </ul>
-            </article>
-            
-            <article class="experience-item">
-                <h3>Administrative Manager, Corporal</h3>
-                <p class="job-details">US Marine Corps, Quantico, VA | May 2017 - August 2018</p>
-                <ul class="job-responsibilities">
-                    <li>Developed SOPs to ensure compliance with federal regulations</li>
-                    <li>Created administrative processes to streamline operations and assign responsibilities</li>
-                    <li>Trained and guided personnel, supporting over 300 multi-service members</li>
-                    <li>Managed the onboarding process, including training and system integration</li>
-                    <li>Held roles as DTS Routing Official and Organizational Defense Travel Agent, processing over 7,500 authorizations and vouchers</li>
-                </ul>
-            </article>
-            
-            <article class="experience-item">
-                <h3>Administrative Specialist, Private-Lance Corporal</h3>
-                <p class="job-details">US Marine Corps, Quantico, VA | June 2016 - February 2017</p>
-                <ul class="job-responsibilities">
-                    <li>Conducted security preparations for confidential meetings</li>
-                    <li>Assumed responsibilities as DTS Routing Official and Non-Defense Travel System Entry Agent</li>
-                    <li>Participated in building security management rotations, ensuring data and technology integrity</li>
-                </ul>
-            </article>
-        </section>
+<!-- PAGE TRANSITION -->
+<div id="page-transition">
+  <div class="pt-slice"></div>
+  <div class="pt-slice"></div>
+  <div class="pt-slice"></div>
+  <div class="pt-slice"></div>
+  <div class="pt-slice"></div>
+  <div class="pt-slice"></div>
+</div>
 
-        <section class="section education">
-            <h2>Education</h2>
-            <article class="education-item">
-                <h3>Associate of Applied Science in Cybersecurity Penetration Testing</h3>
-                <p>Mt. Hood Community College, Gresham, OR | September 2019 - December 2020</p>
-            </article>
-        </section>
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html">ZAYETS <span>// portfolio</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#projects">Projects</a></li>
+    <li><a href="index.html#skills">Skills</a></li>
+    <li><a href="resume.html" class="active">Resume</a></li>
+    <li><a href="https://github.com/7a6179657473" target="_blank" rel="noopener">GitHub ↗</a></li>
+  </ul>
+</nav>
 
-        <section class="section-skills">
-            <h2>Technical Skills & Expertise</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Desktop & Laptop</h3>
-                    <ul>
-                        <li>Desktop Hardware Installation</li>
-                        <li>Laptop Hardware Installation</li>
-                        <li>Backups & Mirroring</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>Security Auditing</h3>
-                    <ul>
-                        <li>Security Audits</li>
-                        <li>Disaster Recovery Planning</li>
-                        <li>NIST Standards and SOPs</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>Administration</h3>
-                    <ul>
-                        <li>Personnel Onboarding</li>
-                        <li>Compliance Management</li>
-                        <li>Process Development</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-    </main>
+<div class="page-wrap">
 
-    <footer class="footer">
-        <p>&copy; 2026 Zayets. All rights reserved.</p>
-    </footer>
+  <!-- HEADER -->
+  <div class="resume-header">
+    <div>
+      <p class="resume-eyebrow">Curriculum Vitae</p>
+      <h1 class="resume-name">[Name Redacted]</h1>
+      <p class="resume-title">Cybersecurity Professional &amp; Developer</p>
+    </div>
+    <div class="resume-contact">
+      <a href="https://github.com/7a6179657473" target="_blank" rel="noopener">github.com/7a6179657473</a>
+      <a href="https://7a6179657473.github.io">7a6179657473.github.io</a>
+    </div>
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="r-section">
+    <div class="r-section-header">
+      <span class="r-section-label">Summary</span>
+      <div class="r-section-line"></div>
+    </div>
+    <p class="r-summary">
+      Cybersecurity professional with a background spanning penetration testing, security auditing,
+      network analysis, and threat mitigation. Proven ability to merge technical security expertise
+      with operational discipline, combining freelance consulting experience with military-grade
+      process development. Skilled in vulnerability assessment, NIST compliance, security automation,
+      and AI-assisted tooling. Effective communicator able to present technical findings to both
+      technical and non-technical stakeholders.
+    </p>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="r-section">
+    <div class="r-section-header">
+      <span class="r-section-label">Technical Skills</span>
+      <div class="r-section-line"></div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-row">
+        <span class="skill-label">Security Tools</span>
+        <span class="skill-value">Burp Suite, Nmap, Wireshark, Hashcat, Metasploit, Scapy</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Languages</span>
+        <span class="skill-value">Python, PowerShell, Bash, TypeScript</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Frameworks</span>
+        <span class="skill-value">NIST CSF, MITRE ATT&amp;CK, OWASP</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Platforms</span>
+        <span class="skill-value">Windows, Linux (Ubuntu), WSL2, Docker</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">CTF / Bug Bounty</span>
+        <span class="skill-value">HackTheBox, TryHackMe, PicoCTF, HackerOne, Bugcrowd, VulnHub</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Domains</span>
+        <span class="skill-value">Penetration Testing, Vulnerability Assessment, Threat Detection, Incident Response, Wireless Security, Network Security, Disaster Recovery</span>
+      </div>
+      <div class="skill-row" style="grid-column: span 1;">
+        <span class="skill-label">AI / ML Tooling</span>
+        <span class="skill-value">FLUX.1 Dev, Stable Diffusion, Kohya_ss, ai-toolkit, ComfyUI, PyTorch, rembg</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="r-section">
+    <div class="r-section-header">
+      <span class="r-section-label">Professional Experience</span>
+      <div class="r-section-line"></div>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-title">Plant Administrator</span>
+        <span class="job-dates">March 2023 – September 2025</span>
+      </div>
+      <div class="job-org">Mutual Materials</div>
+      <ul class="job-bullets">
+        <li>Oversaw purchase order activity totaling more than $9M across two manufacturing facilities, coordinating with vendors and internal stakeholders to keep procurement on track.</li>
+        <li>Built a budgeting tool in Excel for both plants, improving expenditure visibility and making reporting more accessible for leadership.</li>
+        <li>Produced weekly and monthly reports covering inventory performance, production yields, and budget status to support operational decision-making.</li>
+        <li>Conducted regular inventory audits to reduce discrepancies and maintain appropriate stock levels.</li>
+        <li>Managed time cards and attendance records for temporary employees sourced from multiple staffing agencies.</li>
+        <li>Served on the safety committee, reviewing incidents and delivering department safety briefs.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-title">Cybersecurity Consultant</span>
+        <span class="job-dates">March 2019 – October 2023</span>
+      </div>
+      <div class="job-org">Freelance</div>
+      <ul class="job-bullets">
+        <li>Conducted in-depth security audits and vulnerability assessments for small to medium-sized businesses.</li>
+        <li>Evaluated network security architecture for NIST standards compliance and remediation planning.</li>
+        <li>Assessed executive digital footprints for credential exposure in breach databases.</li>
+        <li>Developed and implemented disaster recovery plans for system failure and continuity scenarios.</li>
+        <li>Presented on threat actor TTPs and attack vectors to network administrators, providing actionable countermeasures.</li>
+        <li>Prepared detailed vulnerability reports for submission to senior administrators and department leadership.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-title">IT Security Consultant</span>
+        <span class="job-dates">July 2021 – October 2021</span>
+      </div>
+      <div class="job-org">Non-Profit (Contract)</div>
+      <ul class="job-bullets">
+        <li>Conducted a comprehensive IT security audit identifying risks and vulnerabilities across the organization.</li>
+        <li>Assessed and tested security controls including firewalls, VPNs, and access controls.</li>
+        <li>Collaborated with IT teams to develop technical solutions that improved overall security posture.</li>
+        <li>Produced detailed vulnerability findings reports for department leadership review.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-title">Administrative Manager, Corporal</span>
+        <span class="job-dates">May 2017 – August 2018</span>
+      </div>
+      <div class="job-org">U.S. Marine Corps — MCU, Expeditionary Warfare School</div>
+      <ul class="job-bullets">
+        <li>Developed and implemented organizational SOPs ensuring compliance with federal regulations across 300+ multi-service members.</li>
+        <li>Managed onboarding, system integration, and policy training for incoming personnel.</li>
+        <li>Conducted security preparations including building sweeps and device confiscation for Confidential-Secret level briefs.</li>
+        <li>Participated in weekly building security management rotations to uphold integrity of data and technology assets.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-title">Administrative Specialist, Lance Corporal</span>
+        <span class="job-dates">June 2016 – February 2017</span>
+      </div>
+      <div class="job-org">U.S. Marine Corps — MCU, Expeditionary Warfare School</div>
+      <ul class="job-bullets">
+        <li>Processed over 7,500 travel authorizations and vouchers as DTS Routing Official (RO), ODTA, and NDTEA.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="r-section">
+    <div class="r-section-header">
+      <span class="r-section-label">Projects</span>
+      <div class="r-section-line"></div>
+    </div>
+
+    <div class="project-entry">
+      <div class="project-entry-header">
+        <span class="project-entry-name">AI Shelf Image Generation — LoRA Training Pipeline</span>
+        <span class="job-dates">2025 – Present</span>
+      </div>
+      <div class="project-entry-sub">Docker · FLUX.1 Dev · Kohya_ss · ComfyUI · ai-toolkit</div>
+      <ul class="project-entry-bullets">
+        <li>Sole project manager across 11 phases; manually deployed and operated a Dockerized AI pipeline on an RTX 5080 (Blackwell sm_120), troubleshooting 29 documented build and training errors with Claude AI used to parse log dumps.</li>
+        <li>Iterated across eight LoRA versions spanning three base model architectures (SD 1.5, Realistic Vision, Juggernaut XL), manually tuning parameters against defined quality goals.</li>
+        <li>Identified SDXL architectural limits for structural prompt control; executed a strategic pivot to FLUX.1 Dev via ComfyUI and ai-toolkit, resolving tier-count and fine-detail rendering blockers.</li>
+        <li>Completed FLUX.1 LoRA training (3,000 steps) using qint8 quantization — the only viable path for sm_120 Blackwell; resolved five previously undocumented ai-toolkit bugs including an O(N³) MemoryManager hang.</li>
+        <li>Expanded training dataset from 37 to 92+ images; implemented rembg GPU background removal pipeline and built a reusable ComfyUI drag-and-drop inference workflow for production use.</li>
+      </ul>
+      <div class="project-tags">
+        <span class="tag a">Python</span><span class="tag a">Docker</span>
+        <span class="tag">FLUX.1 Dev</span><span class="tag">Kohya_ss</span>
+        <span class="tag">ComfyUI</span><span class="tag">PyTorch</span>
+        <span class="tag">CUDA 12.8</span><span class="tag">rembg</span>
+      </div>
+    </div>
+
+    <div class="project-entry">
+      <div class="project-entry-header">
+        <span class="project-entry-name">H1 Hactivity Monitor / Bug Bounty Monitor</span>
+      </div>
+      <div class="project-entry-sub">Python · HackerOne API · subfinder · httpx · systemd</div>
+      <ul class="project-entry-bullets">
+        <li>Developed a two-tool Python recon suite: the H1 Hactivity Monitor polls the HackerOne API for real-time disclosed vulnerability reports, surfacing newly public CVEs and researcher write-ups as they are released.</li>
+        <li>Extended into a full automated recon pipeline using subfinder for subdomain enumeration and httpx for live host probing; runs on a systemd timer, diffs target asset baselines every 4 hours, and pushes categorized change alerts to Discord.</li>
+        <li>Engineered for operational reliability: flock-based process locking prevents concurrent runs, automatic state archiving preserves baseline history, and a hardened systemd unit applies filesystem sandboxing and privilege restrictions.</li>
+      </ul>
+      <div class="project-tags">
+        <span class="tag a">Python</span><span class="tag a">Bash</span>
+        <span class="tag">HackerOne API</span><span class="tag">subfinder</span>
+        <span class="tag">httpx</span><span class="tag">systemd</span><span class="tag">Discord Notify</span>
+      </div>
+    </div>
+
+    <div class="project-entry">
+      <div class="project-entry-header">
+        <span class="project-entry-name">Seenya — Wireless Device Detection &amp; Monitoring Platform</span>
+      </div>
+      <div class="project-entry-sub">Python · Flask · Scapy · Angular · WebSocket</div>
+      <ul class="project-entry-bullets">
+        <li>Built a full-stack wireless MAC address scanner using Python (Flask + Scapy) for packet capture and Angular Material for a real-time monitoring UI, with WebSocket-based live device feeds via Flask-SocketIO.</li>
+        <li>Implemented OUI-based device type identification, signal strength tracking, packet count logging, and first/last-seen timestamps — providing a persistent picture of devices within wireless range.</li>
+        <li>Designed with a phased roadmap: Phase 2 targets SQLite/PostgreSQL logging and alerting on known/unknown devices; Phase 4 targets Hak5 Pineapple module and Raspberry Pi portable deployment.</li>
+      </ul>
+      <div class="project-tags">
+        <span class="tag a">Python</span><span class="tag a">Scapy</span>
+        <span class="tag">Flask</span><span class="tag">Angular</span>
+        <span class="tag">WebSocket</span><span class="tag">OUI Lookup</span><span class="tag">Wireless Security</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="r-section">
+    <div class="r-section-header">
+      <span class="r-section-label">Education</span>
+      <div class="r-section-line"></div>
+    </div>
+    <div class="edu-block">
+      <div class="edu-degree">Associate of Applied Science — Cybersecurity Penetration Testing</div>
+      <div class="edu-school">Mt. Hood Community College</div>
+      <div class="edu-dates">September 2019 – December 2020</div>
+    </div>
+  </div>
+
+</div><!-- /page-wrap -->
+
+<footer>
+  <span class="footer-copy">© 2026 ZAYETS</span>
+  <a href="index.html" class="footer-back">← Back to Portfolio</a>
+</footer>
+
+<script>
+  const overlay = document.getElementById('page-transition');
+
+  function transitionOut(href) {
+    overlay.style.pointerEvents = 'all';
+    overlay.querySelectorAll('.pt-slice').forEach(s => {
+      s.style.transformOrigin = 'top';
+      s.style.transform = 'scaleY(0)';
+      s.style.transition = 'none';
+    });
+    overlay.offsetHeight;
+    overlay.querySelectorAll('.pt-slice').forEach((s, i) => {
+      s.style.transition = 'transform 0.45s cubic-bezier(0.76, 0, 0.24, 1)';
+      s.style.transitionDelay = (i * 0.055) + 's';
+      s.style.transform = 'scaleY(1)';
+    });
+    setTimeout(() => { window.location.href = href; }, 650);
+  }
+
+  function transitionIn() {
+    overlay.querySelectorAll('.pt-slice').forEach(s => {
+      s.style.transformOrigin = 'bottom';
+      s.style.transform = 'scaleY(1)';
+      s.style.transition = 'none';
+    });
+    overlay.offsetHeight;
+    overlay.querySelectorAll('.pt-slice').forEach((s, i) => {
+      s.style.transition = 'transform 0.55s cubic-bezier(0.76, 0, 0.24, 1)';
+      s.style.transitionDelay = (i * 0.06) + 's';
+      s.style.transform = 'scaleY(0)';
+    });
+    setTimeout(() => { overlay.style.pointerEvents = 'none'; }, 900);
+  }
+
+  document.querySelectorAll('a[href]').forEach(link => {
+    const href = link.getAttribute('href');
+    if (!href || href.startsWith('http') || href.startsWith('#') || href.startsWith('mailto')) return;
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      transitionOut(href);
+    });
+  });
+
+  window.addEventListener('load', transitionIn);
+</script>
 </body>
 </html>
