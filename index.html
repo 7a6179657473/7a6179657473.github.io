@@ -275,18 +275,20 @@
 
   .skills-strip-inner {
     display: flex;
+    flex-wrap: wrap;
     padding: 0 3rem;
     gap: 0;
   }
 
   .skill-chip {
-    flex: 1;
+    flex: 1 1 auto;
+    min-width: max-content;
     padding: 1.25rem 1.5rem;
     border-right: 1px solid var(--border);
+    border-bottom: 1px solid transparent;
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    min-width: 0;
   }
 
   .skill-chip:last-child { border-right: none; }
@@ -1017,22 +1019,23 @@
       <div class="project-accent-bar"></div>
       <p class="project-num">03</p>
       <h3 class="project-name">AI Image Generation Pipeline</h3>
-      <p class="project-sub">LoRA Training · Docker · FLUX.1 Dev</p>
+      <p class="project-sub">Commissioned · Docker · FLUX.1 Dev · ControlNet</p>
       <p class="project-desc">
-        Sole project manager and hands-on operator of a multi-phase AI image
-        generation pipeline targeting industrial product photography.
-        Manually deployed and operated a <strong>Dockerized environment</strong> on an
-        RTX 5080 (Blackwell sm_120), resolving 29 documented build and training errors.
-        Iterated across eight LoRA versions spanning three model architectures before
-        executing a strategic pivot to <strong>FLUX.1 Dev</strong> via ComfyUI and ai-toolkit
-        — resolving structural control and fine-detail rendering blockers that
-        persisted across all SDXL runs. Coordinated progress with two external
-        contractors through regular structured meetings.
+        <strong>Commissioned by two business owners</strong> launching an e-commerce store
+        to deliver product-catalog imagery — sole project manager and hands-on operator
+        across a multi-phase pipeline. Manually deployed and operated a
+        <strong>Dockerized environment</strong> on an RTX 5080 (Blackwell sm_120),
+        resolving 31 documented build and training errors. Iterated across eight LoRA
+        versions and three model architectures before a strategic pivot to
+        <strong>FLUX.1 Dev</strong> via ComfyUI and ai-toolkit, then layered
+        <strong>FLUX Canny ControlNet</strong> as a hard geometric constraint and a
+        parametric template for exact on-demand dimensions — without retraining per variant.
       </p>
       <div class="project-tags">
         <span class="tag accent">Python</span>
         <span class="tag accent">Docker</span>
         <span class="tag">FLUX.1 Dev</span>
+        <span class="tag">ControlNet</span>
         <span class="tag">Kohya_ss</span>
         <span class="tag">ComfyUI</span>
         <span class="tag">PyTorch</span>
@@ -1087,8 +1090,8 @@
     <div class="skill-block">
       <p class="skill-block-title">Technical Tools</p>
       <ul class="skill-list">
-        <li>Burp Suite · Nmap · Wireshark</li>
-        <li>Metasploit · Scapy</li>
+        <li>Burp Suite · Metasploit</li>
+        <li>Hashcat · Scapy</li>
         <li>Python · PowerShell · Bash</li>
         <li>Docker · Linux · WSL2</li>
       </ul>
@@ -1103,11 +1106,14 @@
       </ul>
     </div>
     <div class="skill-block">
-      <p class="skill-block-title">CTF / Bug Bounty</p>
+      <p class="skill-block-title">Security Research</p>
       <ul class="skill-list">
-        <li>HackTheBox · TryHackMe</li>
-        <li>PicoCTF · VulnHub</li>
+        <li>Coordinated Disclosure (VDP)</li>
+        <li>XSS — Reflected &amp; Stored</li>
+        <li>PII Exposure Findings</li>
+        <li>DB-Credential Disclosure</li>
         <li>HackerOne · Bugcrowd</li>
+        <li>HackTheBox · TryHackMe</li>
       </ul>
     </div>
   </div>
