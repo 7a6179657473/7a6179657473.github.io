@@ -27,6 +27,11 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
 
+  a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
   body {
     background: var(--bg);
     color: var(--text);
@@ -108,9 +113,7 @@
 
   /* PAGE HEADER */
   .resume-header {
-    margin-bottom: 4rem;
-    padding-bottom: 2.5rem;
-    border-bottom: 1px solid var(--border);
+    margin-bottom: 3rem;
     display: grid;
     grid-template-columns: 1fr auto;
     gap: 2rem;
@@ -490,9 +493,9 @@
   <!-- HEADER -->
   <div class="resume-header">
     <div>
-      <p class="resume-eyebrow">Curriculum Vitae</p>
+      <p class="resume-eyebrow">What I've been, What I've done</p>
       <h1 class="resume-name">[Name Redacted]</h1>
-      <p class="resume-title">Security Consultant · Marine Veteran</p>
+      <p class="resume-title">Security Consultant · Marine Veteran · Administrator</p>
     </div>
     <div class="resume-contact">
       <a href="https://github.com/7a6179657473" target="_blank" rel="noopener">github.com/7a6179657473</a>
@@ -508,9 +511,9 @@
     </div>
     <p class="r-summary">
       Security consultant and Marine veteran focused on helping small and mid-sized businesses
-      identify what's actually worth protecting and defend it within a realistic budget.
+      identify what's worth protecting and defend it within a realistic budget.
       Core strengths in vulnerability assessment, NIST-aligned security auditing, and disaster
-      recovery planning, backed by hands-on technical work — including a Dockerized ML pipeline
+      recovery planning, backed by hands-on technical work, including a Dockerized ML pipeline
       built and operated end to end on current-generation GPU hardware. Translates security
       findings into decisions an owner can act on, rather than a report that goes unread.
     </p>
@@ -533,11 +536,11 @@
       </div>
       <div class="skill-row">
         <span class="skill-label">Frameworks</span>
-        <span class="skill-value">NIST CSF, NIST SP 800-34 / 800-115, IR 8425A, SP 1305 / 1800-34, MITRE ATT&amp;CK, OWASP</span>
+        <span class="skill-value">NIST CSF, MITRE ATT&amp;CK, OWASP</span>
       </div>
       <div class="skill-row">
         <span class="skill-label">Platforms</span>
-        <span class="skill-value">Windows, Linux (Ubuntu), WSL2, Docker, Microsoft 365 (Entra ID, Intune, Exchange Online)</span>
+        <span class="skill-value">Windows, Linux (Ubuntu), WSL2, Docker</span>
       </div>
       <div class="skill-row">
         <span class="skill-label">Domains</span>
@@ -559,17 +562,16 @@
 
     <div class="job">
       <div class="job-header">
-        <span class="job-title">Security &amp; IT Consultant</span>
+        <span class="job-title">Independent IT &amp; Security Consultant (Solo MSP)</span>
         <span class="job-dates">2026 – Present</span>
       </div>
-      <div class="job-org">Independent Practice</div>
+      <div class="job-org">Independent Consulting</div>
       <ul class="job-bullets">
-        <li>Delivered a solo managed IT engagement for a small single-site electrical contracting client (identity withheld) — deployed Microsoft 365 Business Premium (tenant, domain/email, and licensing) with a documented MX-cutover risk plan and Intune/Autopilot device management scoped as the next phase.</li>
-        <li>Conducted a structured network and physical-security assessment — master asset inventory, topology mapping, physical-security walkthrough, and a documentation-gap analysis across five categories — producing formal client deliverables.</li>
-        <li>Authored a NIST SP 800-34-aligned Disaster Recovery Plan / ISCP and Business Impact Analysis, and scoped whether a full Business Continuity Plan was warranted, documenting a defensible decision rather than defaulting to one.</li>
-        <li>Applied consumer-IoT and supply-chain security baselines (NIST IR 8425A, SP 1305, SP 1800-34) to harden the client's router, cameras, and endpoints; scoped security testing against NIST SP 800-115.</li>
-        <li>Diagnosed multiple correlated network faults by tracing them to a shared router/DHCP root cause, enabling one coordinated fix instead of separate remediations.</li>
-        <li>Stood up client-facing operational tooling (IT asset tracker, remediation task tracker, onboarding guides) and built a reusable engagement template pack to standardize assessment and continuity deliverables across future client work.</li>
+        <li>Provide end-to-end managed IT and security services to small business clients as a one-person MSP, spanning systems administration, help-desk support, network and physical-security assessment, and NIST-aligned continuity planning.</li>
+        <li>Deploy and administer Microsoft 365 Business Premium environments: tenant setup, domain and email configuration, licensing strategy, MX-cutover risk planning, and Intune/Autopilot device management.</li>
+        <li>Author NIST SP 800-34-aligned continuity deliverables (Disaster Recovery Plans / ISCPs and Business Impact Analyses), with client-owned recovery figures (RTO/RPO/MTD) confirmed by the owner rather than assumed, and Business Continuity Plans scoped to each client's size and obligations.</li>
+        <li>Conduct structured network and physical-security assessments (asset inventory, topology mapping, physical walkthrough, and documentation-gap analysis), diagnosing at the shared root-cause layer to resolve correlated faults with a single coordinated fix.</li>
+        <li>Maintain a reusable 11-document engagement template pack and house-style documentation standard that keep client deliverables consistent and cut setup time as the client base grows.</li>
       </ul>
     </div>
 
@@ -652,7 +654,7 @@
       <div class="r-section-line"></div>
     </div>
     <ul class="job-bullets">
-      <li>Identified and responsibly disclosed real vulnerabilities to educational, state, and enterprise organizations through their public vulnerability disclosure programs (VDPs) — findings spanning reflected and stored XSS, PII exposure, and critical database-credential disclosure.</li>
+      <li>Identified and responsibly disclosed real vulnerabilities to educational, state, and enterprise organizations through their public vulnerability disclosure programs (VDPs), with findings spanning reflected and stored XSS, PII exposure, and critical database-credential disclosure.</li>
       <li>Active on HackTheBox, TryHackMe, HackerOne, and Bugcrowd, including a confirmed Bugcrowd submission (closed as a duplicate); focus is on finding and reporting real bugs in live targets over chasing bounties.</li>
     </ul>
   </div>
@@ -674,8 +676,8 @@
         <li>Commissioned by two business owners launching an e-commerce store to deliver product-catalog imagery; sole project manager across 16 phases, manually deploying and operating a Dockerized AI pipeline on an RTX 5080 (Blackwell sm_120) and using Claude AI to parse log dumps while troubleshooting 31 documented build and training errors.</li>
         <li>Iterated across eight LoRA versions spanning three base model architectures (SD 1.5, Realistic Vision, Juggernaut XL), manually tuning parameters against defined quality goals.</li>
         <li>Identified SDXL architectural limits for structural prompt control; executed a strategic pivot to FLUX.1 Dev via ComfyUI and ai-toolkit, resolving tier-count and fine-detail rendering blockers.</li>
-        <li>Completed FLUX.1 LoRA training (3,000 steps) using qint8 quantization — the only viable path for sm_120 Blackwell; resolved five previously undocumented ai-toolkit bugs including an O(N³) MemoryManager hang.</li>
-        <li>Integrated FLUX Canny ControlNet (InstantX) as a hard geometric constraint to enforce straight shelf structure and lock tier count, paired with a parametric template script for exact on-demand width/height/tier variants — eliminating per-variant retraining.</li>
+        <li>Completed FLUX.1 LoRA training (3,000 steps) using qint8 quantization, the only viable path for sm_120 Blackwell; resolved five previously undocumented ai-toolkit bugs including an O(N³) MemoryManager hang.</li>
+        <li>Integrated FLUX Canny ControlNet (InstantX) as a hard geometric constraint to enforce straight shelf structure and lock tier count, paired with a parametric template script for exact on-demand width/height/tier variants, eliminating per-variant retraining.</li>
         <li>When a rendering detour broke the angled views, recovered the exact working recipe from a known-good image's embedded PNG metadata and reproduced it pixel-perfect, then built a script that extracts parameters into a self-documenting recipe CSV.</li>
         <li>Expanded training dataset from 37 to 92+ images; implemented rembg GPU background removal pipeline and built a reusable ComfyUI drag-and-drop inference workflow for production use.</li>
       </ul>
@@ -711,7 +713,7 @@
       <div class="project-entry-sub">Python · Flask · Scapy · Angular · WebSocket</div>
       <ul class="project-entry-bullets">
         <li>Built a full-stack wireless MAC address scanner using Python (Flask + Scapy) for packet capture and Angular Material for a real-time monitoring UI, with WebSocket-based live device feeds via Flask-SocketIO.</li>
-        <li>Implemented OUI-based device type identification, signal strength tracking, packet count logging, and first/last-seen timestamps — providing a persistent picture of devices within wireless range.</li>
+        <li>Implemented OUI-based device type identification, signal strength tracking, packet count logging, and first/last-seen timestamps, providing a persistent picture of devices within wireless range.</li>
         <li>Designed with a phased roadmap: Phase 2 targets SQLite/PostgreSQL logging and alerting on known/unknown devices; Phase 4 targets Hak5 Pineapple module and Raspberry Pi portable deployment.</li>
       </ul>
       <div class="project-tags">
@@ -789,4 +791,4 @@
 </script>
 </body>
 </html>
-<!-- Version 1.0.1 -->
+<!-- Version 1.0.5 -->

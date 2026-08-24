@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Security professional specializing in security management, policy development, disaster recovery planning, and asset governance — helping businesses understand what they need to protect and why.">
+<meta name="description" content="Security professional specializing in security management, policy development, disaster recovery planning, and asset governance, helping businesses understand what they need to protect and why.">
 <title>ZAYETS — Security Management & Advisory</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -30,6 +30,11 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   html { scroll-behavior: smooth; }
+
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
 
   body {
     background: var(--bg);
@@ -105,6 +110,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding: 0 3rem;
     padding-top: 64px;
     overflow: hidden;
   }
@@ -131,13 +137,6 @@
 
   .hero-content {
     position: relative;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 3rem;
-  }
-
-  .hero-content > * {
     max-width: 900px;
   }
 
@@ -726,8 +725,7 @@
     .nav-links a { font-size: 0.62rem; letter-spacing: 0.06em; }
 
     /* HERO */
-    .hero { padding-top: 64px; padding-bottom: 5rem; }
-    .hero-content { padding: 0 1.25rem; }
+    .hero { padding: 0 1.25rem; padding-top: 64px; padding-bottom: 5rem; }
     .hero-name { font-size: 2.75rem; }
     .hero-summary { font-size: 0.95rem; }
 
@@ -829,12 +827,12 @@
     </h1>
     <p class="hero-title">Security Advisor · Policy Development · Risk Management</p>
     <p class="hero-summary">
-      Security professional who bridges the gap between <strong>technical risk</strong> and
-      <strong>business reality</strong>. From disaster recovery planning and asset governance
-      to policy development and vendor compliance — helping organizations understand
+      Security professional who translates technical risk into
+      terms a business owner can act on. From disaster recovery planning and asset governance
+      to policy development and vendor compliance, helping organizations understand
       what they own, what's exposed, and what to do about it.
       Former U.S. Marine. Freelance consultant. The person who explains why
-      <strong>MFA isn't optional</strong> — and makes it stick.
+      <strong>MFA isn't optional</strong>, and makes it stick.
     </p>
     <div class="hero-ctas">
       <a href="#projects" class="btn-primary">View Projects →</a>
@@ -859,7 +857,7 @@
 </div>
 
 <!-- ADVISORY PHILOSOPHY -->
-<div style="background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+<div style="background: var(--bg2); border-bottom: 1px solid var(--border);">
 <section class="advisory-section" style="padding: 5rem 3rem;">
   <p class="section-label">Approach</p>
   <h2 class="section-title" style="margin-bottom: 2rem;">Security you can actually explain<br><span style="color: var(--muted); font-size: 0.65em; font-weight: 600; letter-spacing: -0.01em;">to the person signing the checks.</span></h2>
@@ -869,27 +867,27 @@
     <div style="background: var(--bg); padding: 2rem 2.25rem;">
       <p style="font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.85rem;">The first conversation</p>
       <p style="font-size: 0.92rem; color: var(--muted2); line-height: 1.75;">
-        Most small businesses don't have a security policy. Not a bad one — <strong style="color: var(--text);">none at all.</strong>
+        Most small businesses don't have a security policy. Not a bad one: <strong style="color: var(--text);">none at all.</strong>
         They don't know which laptops have EDR installed, whether those endpoints are pulling updates,
         or what happens to their data when an employee walks out the door.
-        The first step isn't buying software. It's understanding what you actually have.
+        The first step is understanding what you already have, before buying any software.
       </p>
     </div>
 
     <div style="background: var(--bg); padding: 2rem 2.25rem;">
       <p style="font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.85rem;">Asset identification</p>
       <p style="font-size: 0.92rem; color: var(--muted2); line-height: 1.75;">
-        You can't protect what you can't see. <strong style="color: var(--text);">Asset identification</strong> isn't a technical exercise —
-        it's a business one. Which employee is using which device? Is that device managed?
+        You can't protect what you can't see. <strong style="color: var(--text);">Asset identification</strong> is a business
+        exercise as much as a technical one. Which employee is using which device? Is that device managed?
         Does it meet the policy you haven't written yet? These are the questions that
-        determine your actual attack surface.
+        determine your attack surface.
       </p>
     </div>
 
     <div style="background: var(--bg); padding: 2rem 2.25rem;">
       <p style="font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.85rem;">Disaster recovery planning</p>
       <p style="font-size: 0.92rem; color: var(--muted2); line-height: 1.75;">
-        A breach isn't a matter of if. <strong style="color: var(--text);">A DRP answers the question your team will ask at 2am</strong>
+        Most businesses will face some sort of breach eventually. <strong style="color: var(--text);">A DRP answers the question your team will ask at 2am</strong>
         when something goes wrong: what do we do right now? Who calls who?
         What systems get isolated, what gets preserved, and how do we get back online
         without making things worse?
@@ -900,9 +898,9 @@
       <p style="font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.85rem;">Proportional security</p>
       <p style="font-size: 0.92rem; color: var(--muted2); line-height: 1.75;">
         Full enterprise security implementation is expensive. <strong style="color: var(--text);">Good baseline security isn't.</strong>
-        MFA, a written policy, a documented asset list, and a recovery plan —
-        these are not glamorous. But they are the difference between a bad day
-        and a business-ending event. That's the conversation worth having.
+        MFA, a written policy, a documented asset list, and a recovery plan
+        isn't exciting. But they are the difference between a bad day
+        and a business-ending event. That's the conversation to start with.
       </p>
     </div>
 
@@ -912,7 +910,7 @@
     <div style="flex: 1; min-width: 260px;">
       <p style="font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem;">The goal</p>
       <p style="font-size: 0.95rem; color: var(--text); line-height: 1.7;">
-        If I can walk out of a meeting having convinced a business owner that MFA alone will likely save everything they've built —
+        If I can walk out of a meeting having convinced a business owner that MFA alone will likely save everything they've built,
         that's a productive day.
       </p>
     </div>
@@ -931,110 +929,77 @@
 
   <div class="projects-grid">
 
-    <!-- FEATURED: Managed IT & Continuity Engagement -->
+    <!-- FEATURED: Bug Bounty Monitor -->
     <div class="project-card featured fade-up">
       <div class="project-accent-bar"></div>
       <div class="featured-inner">
         <div>
           <p class="project-num">01 — Featured</p>
-          <h3 class="project-name">Managed IT &amp; Continuity Engagement</h3>
-          <p class="project-sub">Client Engagement · Assessment · NIST-Aligned DR &amp; BCP Scoping</p>
+          <h3 class="project-name">H1 Hactivity Monitor</h3>
+          <p class="project-sub">Bug Bounty Recon Pipeline</p>
           <p class="project-desc">
-            An end-to-end managed IT engagement for a <strong>small single-site electrical contracting business</strong>,
-            delivered solo. Deployed <strong>Microsoft 365 Business Premium</strong>, then ran a structured
-            <strong>network and physical-security assessment</strong> — asset inventory, topology mapping, a physical
-            walkthrough, and a documentation-gap analysis — turning &ldquo;we're not sure what we have&rdquo; into a
-            documented picture an owner can actually act on.
+            A two-tool Python recon suite built for continuous bug bounty operations.
+            The <strong>H1 Hactivity Monitor</strong> polls the HackerOne API in real time,
+            surfacing newly disclosed vulnerability reports as they go public.
+            Extended into a full automated recon pipeline: subfinder enumerates
+            subdomains, httpx probes live hosts, and ProjectDiscovery notify pushes
+            categorized asset-change alerts to Discord every 4 hours.
+            Diffs results against saved baselines to surface only what changed:
+            new subdomains, services appearing or disappearing, scope shifts.
           </p>
           <p class="project-desc">
-            Authored a <strong>NIST SP 800-34-aligned Disaster Recovery Plan / ISCP</strong> and Business Impact Analysis,
-            and made a documented, defensible call on whether a full <strong>Business Continuity Plan</strong> was warranted
-            for a business this size — rather than selling one by default. Hardened routers, cameras, and endpoints against
-            consumer-IoT and supply-chain baselines, and packaged every deliverable into a <strong>reusable template set</strong>
-            for future clients.
+            Built for reliability: flock-based locking prevents overlapping runs,
+            automatic state archiving preserves baseline history, and the systemd unit
+            applies filesystem sandboxing and privilege restrictions to minimize attack
+            surface on the host itself.
           </p>
           <div class="project-tags">
-            <span class="tag accent">Microsoft 365</span>
-            <span class="tag accent">NIST SP 800-34</span>
-            <span class="tag accent">Continuity Planning</span>
-            <span class="tag">DR / ISCP</span>
-            <span class="tag">Business Impact Analysis</span>
-            <span class="tag">Network Assessment</span>
-            <span class="tag">Physical Security</span>
-            <span class="tag">IoT Hardening</span>
+            <span class="tag accent">Python</span>
+            <span class="tag accent">Bash</span>
+            <span class="tag">HackerOne API</span>
+            <span class="tag">subfinder</span>
+            <span class="tag">httpx</span>
+            <span class="tag">systemd</span>
+            <span class="tag">Discord Notify</span>
+            <span class="tag">Security Automation</span>
           </div>
-          <p class="project-desc" style="font-size: 0.8rem; color: var(--muted); margin-top: 1.25rem;">Client identity withheld for confidentiality.</p>
+          <a href="https://github.com/7a6179657473/H1_HACTIVITY_MONITOR" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
         </div>
         <div>
           <div class="featured-stats">
             <div class="stat-box">
-              <div class="stat-num">4</div>
-              <div class="stat-label">M365 seats deployed</div>
+              <div class="stat-num">4h</div>
+              <div class="stat-label">Scan interval</div>
             </div>
             <div class="stat-box">
-              <div class="stat-num">5</div>
-              <div class="stat-label">NIST standards applied</div>
+              <div class="stat-num">2</div>
+              <div class="stat-label">Integrated tools</div>
             </div>
             <div class="stat-box">
-              <div class="stat-num">43</div>
-              <div class="stat-label">Remediation tasks tracked</div>
+              <div class="stat-num">∞</div>
+              <div class="stat-label">Targets monitored</div>
             </div>
             <div class="stat-box">
-              <div class="stat-num">11</div>
-              <div class="stat-label">Reusable templates built</div>
+              <div class="stat-num">0</div>
+              <div class="stat-label">Overlap runs</div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- H1 Hactivity Monitor -->
-    <div class="project-card fade-up">
-      <div class="project-accent-bar"></div>
-      <p class="project-num">02</p>
-      <h3 class="project-name">H1 Hactivity Monitor</h3>
-      <p class="project-sub">Bug Bounty Recon Pipeline</p>
-      <p class="project-desc">
-        A two-tool Python recon suite built for continuous bug bounty operations.
-        The <strong>H1 Hactivity Monitor</strong> polls the HackerOne API in real time,
-        surfacing newly disclosed vulnerability reports as they go public.
-        Extended into a full <strong>automated recon pipeline</strong> — subfinder enumerates
-        subdomains, httpx probes live hosts, and ProjectDiscovery notify pushes
-        categorized asset-change alerts to Discord every 4 hours.
-        Diffs results against saved baselines to surface only what actually changed:
-        new subdomains, services appearing or disappearing, scope shifts.
-      </p>
-      <p class="project-desc">
-        Engineered for <strong>reliability</strong>: flock-based locking prevents overlapping runs,
-        automatic state archiving preserves baseline history, and the systemd unit
-        applies filesystem sandboxing and privilege restrictions — minimizing attack
-        surface on the host itself.
-      </p>
-      <div class="project-tags">
-        <span class="tag accent">Python</span>
-        <span class="tag accent">Bash</span>
-        <span class="tag">HackerOne API</span>
-        <span class="tag">subfinder</span>
-        <span class="tag">httpx</span>
-        <span class="tag">systemd</span>
-        <span class="tag">Discord Notify</span>
-        <span class="tag">Security Automation</span>
-      </div>
-      <a href="https://github.com/7a6179657473/H1_HACTIVITY_MONITOR" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
     </div>
 
     <!-- Seenya -->
     <div class="project-card fade-up">
       <div class="project-accent-bar"></div>
-      <p class="project-num">03</p>
+      <p class="project-num">02</p>
       <h3 class="project-name">Seenya</h3>
       <p class="project-sub">Wireless Device Detection Platform</p>
       <p class="project-desc">
         Full-stack wireless MAC address scanner and monitoring platform.
         Python Flask backend uses <strong>Scapy</strong> for real-time packet capture;
         Angular Material frontend delivers a live device feed via WebSocket.
-        Performs <strong>OUI-based device type identification</strong>, tracks signal strength,
-        packet counts, and first/last-seen timestamps — building a persistent
+        Performs OUI-based device type identification, tracks signal strength,
+        packet counts, and first/last-seen timestamps, building a persistent
         picture of every device within wireless range.
       </p>
       <p class="project-desc">
@@ -1057,19 +1022,19 @@
     <!-- AI Pipeline -->
     <div class="project-card fade-up">
       <div class="project-accent-bar"></div>
-      <p class="project-num">04</p>
+      <p class="project-num">03</p>
       <h3 class="project-name">AI Image Generation Pipeline</h3>
       <p class="project-sub">Commissioned · Docker · FLUX.1 Dev · ControlNet</p>
       <p class="project-desc">
-        <strong>Commissioned by two business owners</strong> launching an e-commerce store
-        to deliver product-catalog imagery — sole project manager and hands-on operator
+        Commissioned by two business owners launching an e-commerce store
+        to deliver product-catalog imagery, as sole project manager and hands-on operator
         across a multi-phase pipeline. Manually deployed and operated a
-        <strong>Dockerized environment</strong> on an RTX 5080,
+        Dockerized environment on an RTX 5080,
         resolving 31 documented build and training errors. Iterated across eight LoRA
         versions and three model architectures before a strategic pivot to
         <strong>FLUX.1 Dev</strong> via ComfyUI and ai-toolkit, then layered
         <strong>FLUX Canny ControlNet</strong> as a hard geometric constraint and a
-        parametric template for exact on-demand dimensions resulting in thousands of generations with hundreds of quality production images.
+        parametric template for exact on-demand dimensions, resulting in thousands of generations with hundreds of quality production images.
       </p>
       <div class="project-tags">
         <span class="tag accent">Python</span>
@@ -1173,8 +1138,8 @@
       </h2>
       <p class="contact-sub">
         Available for security consulting, policy development,
-        disaster recovery planning, and security management advisory —
-        helping businesses take their first real steps toward a defensible posture.
+        disaster recovery planning, and security management advisory,
+        helping businesses take their first steps toward a defensible posture.
       </p>
     </div>
     <div class="contact-links">
