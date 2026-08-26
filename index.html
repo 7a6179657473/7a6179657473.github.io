@@ -110,9 +110,17 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 0 3rem;
+    padding: 0;
     padding-top: 64px;
     overflow: hidden;
+  }
+
+  .hero-inner {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 3rem;
   }
 
   .hero-grid-bg {
@@ -725,7 +733,8 @@
     .nav-links a { font-size: 0.62rem; letter-spacing: 0.06em; }
 
     /* HERO */
-    .hero { padding: 0 1.25rem; padding-top: 64px; padding-bottom: 5rem; }
+    .hero { padding: 0; padding-top: 64px; padding-bottom: 5rem; }
+    .hero-inner { padding: 0 1.25rem; }
     .hero-name { font-size: 2.75rem; }
     .hero-summary { font-size: 0.95rem; }
 
@@ -819,6 +828,7 @@
 <div class="hero" id="top">
   <div class="hero-grid-bg"></div>
   <div class="hero-glow"></div>
+  <div class="hero-inner">
   <div class="hero-content">
     <p class="hero-label">Security Management · Policy · Advisory</p>
     <h1 class="hero-name">
@@ -839,6 +849,7 @@
       <a href="resume.html" class="btn-ghost">Resume</a>
       <a href="https://github.com/7a6179657473" target="_blank" rel="noopener" class="btn-ghost">GitHub ↗</a>
     </div>
+  </div>
   </div>
   <div class="hero-scroll">Scroll</div>
 </div>
@@ -1226,4 +1237,4 @@
 </script>
 </body>
 </html>
-<!-- Version 1.0.3 -->
+<!-- Version 1.0.4 -->
