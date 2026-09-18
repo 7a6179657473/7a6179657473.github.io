@@ -7,102 +7,8 @@
 <title>ZAYETS — Security Management & Advisory</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 <style>
-  :root {
-    --bg:        #0a0c0f;
-    --bg2:       #0f1318;
-    --bg3:       #141820;
-    --surface:   #1a1f2e;
-    --border:    #232a38;
-    --border2:   #2e3a50;
-    --accent:    #4af0c4;
-    --accent2:   #1fc99a;
-    --accent-dim:#0a3d2e;
-    --red:       #f05060;
-    --amber:     #f0a030;
-    --text:      #e8edf5;
-    --muted:     #6b7a90;
-    --muted2:    #8a9ab0;
-    --mono:      'Space Mono', monospace;
-    --sans:      'Syne', sans-serif;
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { scroll-behavior: smooth; }
-
-  a:focus-visible, button:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 3px;
-  }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--sans);
-    font-size: 16px;
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
-
-  /* ── NOISE OVERLAY ── */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.5;
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 3rem;
-    height: 64px;
-    background: rgba(10,12,15,0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .nav-logo {
-    font-family: var(--mono);
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--accent);
-    letter-spacing: 0.15em;
-    text-decoration: none;
-  }
-
-  .nav-logo span {
-    color: var(--muted);
-    font-weight: 400;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
-  }
-
-  .nav-links a {
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    letter-spacing: 0.12em;
-    color: var(--muted2);
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover { color: var(--accent); }
-
   /* ── HERO ── */
   .hero {
     position: relative;
@@ -638,24 +544,7 @@
 
   .contact-link:hover .contact-link-arrow { transform: translateX(4px); color: var(--accent); }
 
-  /* ── FOOTER ── */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 2rem 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: var(--bg2);
-  }
-
-  .footer-copy {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-    color: var(--muted);
-    text-transform: uppercase;
-  }
-
+  /* ── FOOTER (index-specific; base footer/.footer-copy are in styles.css) ── */
   .footer-status {
     display: flex;
     align-items: center;
@@ -698,23 +587,8 @@
   .fade-up:nth-child(3) { transition-delay: 0.2s; }
   .fade-up:nth-child(4) { transition-delay: 0.3s; }
 
-  /* GitHub link — abbreviate on small screens */
-  .nav-github-text { display: inline; }
-  .nav-github-short { display: none; }
-
-  /* PAGE TRANSITION OVERLAY */
-  #page-transition {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    pointer-events: none;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-  }
+  /* PAGE TRANSITION OVERLAY (index-specific timing; shell is in styles.css) */
   .pt-slice {
-    background: var(--bg);
-    transform: scaleY(1);
-    transform-origin: top;
     transition: transform 0.55s cubic-bezier(0.76, 0, 0.24, 1);
   }
   .pt-slice:nth-child(1) { transition-delay: 0.00s; }
@@ -727,10 +601,7 @@
   #page-transition.gone .pt-slice     { transform: scaleY(0); transform-origin: bottom; }
 
   @media (max-width: 900px) {
-    /* NAV — hide text links, show hamburger label only */
-    nav { padding: 0 1.25rem; gap: 1rem; }
-    .nav-links { gap: 1.25rem; }
-    .nav-links a { font-size: 0.62rem; letter-spacing: 0.06em; }
+    /* NAV, footer shared breakpoint rules live in styles.css */
 
     /* HERO */
     .hero { padding: 0; padding-top: 64px; padding-bottom: 5rem; }
@@ -785,16 +656,10 @@
 
     /* CONTACT */
     .contact-wrap { grid-template-columns: 1fr; }
-
-    /* FOOTER */
-    footer { flex-direction: column; gap: 1rem; text-align: center; }
   }
 
   @media (max-width: 480px) {
-    /* Extra small — hide nav text links entirely, keep logo + resume only */
-    .nav-links li:not(:last-child):not(:nth-last-child(2)) { display: none; }
-    .nav-github-text { display: none; }
-    .nav-github-short { display: inline; }
+    /* Extra small — nav text-link hiding is in styles.css */
     .hero-name { font-size: 2.2rem; }
     .hero-title { font-size: 0.72rem; }
   }
@@ -820,7 +685,7 @@
     <li><a href="#projects">Projects</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="resume.html">Resume</a></li>
-    <li><a href="https://github.com/7a6179657473" target="_blank" rel="noopener"><span class="nav-github-text">GitHub ↗</span><span class="nav-github-short">GH ↗</span></a></li>
+    <li><a href="https://github.com/7a6179657473" target="_blank" rel="noopener"><span class="nav-github-text">GitHub ↗</span><span class="nav-github-short">GH ↗</span><span class="sr-only"> (opens in new tab)</span></a></li>
   </ul>
 </nav>
 
@@ -847,7 +712,7 @@
     <div class="hero-ctas">
       <a href="#projects" class="btn-primary">View Projects →</a>
       <a href="resume.html" class="btn-ghost">Resume</a>
-      <a href="https://github.com/7a6179657473" target="_blank" rel="noopener" class="btn-ghost">GitHub ↗</a>
+      <a href="https://github.com/7a6179657473" target="_blank" rel="noopener" class="btn-ghost">GitHub ↗<span class="sr-only"> (opens in new tab)</span></a>
     </div>
   </div>
   </div>
@@ -974,7 +839,7 @@
             <span class="tag">Discord Notify</span>
             <span class="tag">Security Automation</span>
           </div>
-          <a href="https://github.com/7a6179657473/H1_HACTIVITY_MONITOR" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
+          <a href="https://github.com/7a6179657473/H1_HACTIVITY_MONITOR" target="_blank" rel="noopener" class="project-link">View on GitHub →<span class="sr-only"> (opens in new tab)</span></a>
         </div>
         <div>
           <div class="featured-stats">
@@ -1027,7 +892,7 @@
         <span class="tag">OUI Lookup</span>
         <span class="tag">Wireless Security</span>
       </div>
-      <a href="https://github.com/7a6179657473/Seenya" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
+      <a href="https://github.com/7a6179657473/Seenya" target="_blank" rel="noopener" class="project-link">View on GitHub →<span class="sr-only"> (opens in new tab)</span></a>
     </div>
 
     <!-- AI Pipeline -->
@@ -1058,7 +923,7 @@
         <span class="tag">CUDA 12.8</span>
         <span class="tag">rembg</span>
       </div>
-      <a href="https://github.com/7a6179657473" target="_blank" rel="noopener" class="project-link">View Profile →</a>
+      <a href="https://github.com/7a6179657473" target="_blank" rel="noopener" class="project-link">View Profile →<span class="sr-only"> (opens in new tab)</span></a>
     </div>
 
   </div>
@@ -1158,6 +1023,7 @@
         <span class="contact-link-icon">GitHub</span>
         <span class="contact-link-val">github.com/7a6179657473</span>
         <span class="contact-link-arrow">→</span>
+        <span class="sr-only"> (opens in new tab)</span>
       </a>
       <a href="resume.html" class="contact-link">
         <span class="contact-link-icon">Resume</span>
@@ -1227,6 +1093,8 @@
     const href = link.getAttribute('href');
     if (!href || href.startsWith('http') || href.startsWith('#') || href.startsWith('mailto')) return;
     link.addEventListener('click', function(e) {
+      // Let modifier/middle clicks behave natively (new tab, new window, etc.)
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
       e.preventDefault();
       transitionOut(href);
     });
