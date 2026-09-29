@@ -457,7 +457,7 @@
     <div class="job">
       <div class="job-header">
         <span class="job-title">Plant Administrator</span>
-        <span class="job-dates">March 2023 – September 2025</span>
+        <span class="job-dates">April 2023 – September 2025</span>
       </div>
       <div class="job-org">Mutual Materials</div>
       <ul class="job-bullets">
@@ -601,6 +601,26 @@
         <span class="tag">WebSocket</span><span class="tag">OUI Lookup</span><span class="tag">Wireless Security</span>
       </div>
     </div>
+
+    <div class="project-entry">
+      <div class="project-entry-header">
+        <span class="project-entry-name">Bug Bounty Ops Lifecycle</span>
+        <span class="job-dates">2026</span>
+      </div>
+      <div class="project-entry-sub">Bash · Slack · ProjectDiscovery notify · systemd · Claude Code</div>
+      <ul class="project-entry-bullets">
+        <li>Designed and documented the operating lifecycle for a personal bug bounty stack: systemd and cron monitors detect new subdomains and HackerOne disclosures, route them into five purpose-specific Slack channels, and hand off to LLM-assisted triage (Claude in Slack, Claude Code locally).</li>
+        <li>Used Slack @mentions as the escalation control: new-asset alerts wake the triage bot, while disclosure and CVE feeds post as plain text so nothing acts on noise.</li>
+        <li>Required every finding to clear a 7-question gate and four validation checks before reaching #reports; no script can post there, which keeps N/A submissions out and protects the validity ratio.</li>
+        <li>Eliminated alert flapping caused by variable passive-recon results, first by routing removed-only alerts to a no-mention notify profile, then by promoting union baselines so only genuinely new assets alert.</li>
+        <li>Added a target-enrollment step that seeds baselines from prior manual recon (dry-run by default, network-free, can only reduce alerts), so the monitor never re-reports hosts already reviewed by hand.</li>
+      </ul>
+      <div class="project-tags">
+        <span class="tag a">Bash</span><span class="tag a">Slack</span>
+        <span class="tag">notify</span><span class="tag">systemd</span>
+        <span class="tag">subfinder</span><span class="tag">Claude Code</span><span class="tag">Alert Engineering</span>
+      </div>
+    </div>
   </div>
 
   <!-- EDUCATION -->
@@ -672,4 +692,4 @@
 </script>
 </body>
 </html>
-<!-- Version 1.0.5 -->
+<!-- Version 1.0.6 -->

@@ -926,6 +926,69 @@
       <a href="https://github.com/7a6179657473" target="_blank" rel="noopener" class="project-link">View Profile →<span class="sr-only"> (opens in new tab)</span></a>
     </div>
 
+
+    <!-- FEATURED: Bug Bounty Ops Lifecycle -->
+    <div class="project-card featured fade-up">
+      <div class="project-accent-bar"></div>
+      <div class="featured-inner">
+        <div>
+          <p class="project-num">04</p>
+          <h3 class="project-name">Bug Bounty Ops Lifecycle</h3>
+          <p class="project-sub">Alert Routing · Human-Gated Triage · Slack</p>
+          <p class="project-desc">
+            The operating design behind the recon stack: how local monitors hand
+            alerts to Slack, and how a finding moves from an automated alert to a
+            submitted report. Monitors on a Linux workstation only detect change.
+            Triage, validation, and report drafting happen in Slack with Claude,
+            backed by Claude Code for recon and scope checks. No script can post to
+            <strong>#reports</strong>; a finding gets there only after clearing a
+            7-question gate and four validation checks, which keeps N/A submissions
+            out and protects the validity ratio.
+          </p>
+          <p class="project-desc">
+            Fixed an alert-quality problem at its source. Passive subfinder results
+            vary from run to run, so hosts flapped between "removed" and "new"
+            indefinitely. Removed-only alerts were first rerouted to a no-mention
+            profile so the triage bot stayed quiet, then baselines were changed to
+            promote the union of old and new results, so only genuinely new assets
+            alert. New targets are seeded from prior manual recon before their first
+            scan, so hosts already reviewed by hand are never re-reported.
+          </p>
+          <div class="project-tags">
+            <span class="tag accent">Bash</span>
+            <span class="tag accent">Slack</span>
+            <span class="tag">ProjectDiscovery notify</span>
+            <span class="tag">systemd</span>
+            <span class="tag">cron</span>
+            <span class="tag">subfinder</span>
+            <span class="tag">Claude Code</span>
+            <span class="tag">Alert Engineering</span>
+          </div>
+          <a href="https://github.com/7a6179657473" target="_blank" rel="noopener" class="project-link">View Profile →<span class="sr-only"> (opens in new tab)</span></a>
+        </div>
+        <div>
+          <div class="featured-stats">
+            <div class="stat-box">
+              <div class="stat-num">5</div>
+              <div class="stat-label">Slack channels</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-num">11</div>
+              <div class="stat-label">Validation checks</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-num">3</div>
+              <div class="stat-label">Feeds monitored</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-num">0</div>
+              <div class="stat-label">Auto-posted reports</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 </div>
@@ -1105,4 +1168,4 @@
 </script>
 </body>
 </html>
-<!-- Version 1.0.5 -->
+<!-- Version 1.0.6 -->
