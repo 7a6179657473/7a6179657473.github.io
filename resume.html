@@ -548,7 +548,7 @@
     <div class="project-entry">
       <div class="project-entry-header">
         <span class="project-entry-name">AI Shelf Image Generation Pipeline</span>
-        <span class="job-dates">April 2026 – June 2026</span>
+        <span class="job-dates">March 2026 – June 2026</span>
       </div>
       <div class="project-entry-sub">Commissioned Client Work · Docker · FLUX.1 Dev · ControlNet · ComfyUI</div>
       <ul class="project-entry-bullets">
@@ -557,6 +557,7 @@
         <li>Identified SDXL architectural limits for structural prompt control; executed a strategic pivot to FLUX.1 Dev via ComfyUI and ai-toolkit, resolving tier-count and fine-detail rendering blockers.</li>
         <li>Completed FLUX.1 LoRA training (3,000 steps) using qint8 quantization, the only viable path for sm_120 Blackwell; resolved five previously undocumented ai-toolkit bugs including an O(N³) MemoryManager hang.</li>
         <li>Integrated FLUX Canny ControlNet (InstantX) as a hard geometric constraint to enforce straight shelf structure and lock tier count, paired with a parametric template script for exact on-demand width/height/tier variants, eliminating per-variant retraining.</li>
+        <li>Ran Krea-2 as the final test model, putting its generations head-to-head against the earlier models&#39; output to compare quality.</li>
         <li>When a rendering detour broke the angled views, recovered the exact working recipe from a known-good image's embedded PNG metadata and reproduced it pixel-perfect, then built a script that extracts parameters into a self-documenting recipe CSV.</li>
         <li>Expanded training dataset from 37 to 92+ images; implemented rembg GPU background removal pipeline and built a reusable ComfyUI drag-and-drop inference workflow for production use.</li>
       </ul>
@@ -692,4 +693,4 @@
 </script>
 </body>
 </html>
-<!-- Version 1.0.6 -->
+<!-- Version 1.0.8 -->
