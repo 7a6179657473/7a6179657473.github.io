@@ -819,7 +819,8 @@
             surfacing newly disclosed vulnerability reports as they go public.
             Extended into a full automated recon pipeline: subfinder enumerates
             subdomains, httpx probes live hosts, and ProjectDiscovery notify pushes
-            categorized asset-change alerts to Discord every 4 hours.
+            categorized asset-change alerts to Slack, on a 4-hour systemd timer
+            with a 24-hour rescan gate.
             Diffs results against saved baselines to surface only what changed:
             new subdomains, services appearing or disappearing, scope shifts.
           </p>
@@ -836,7 +837,7 @@
             <span class="tag">subfinder</span>
             <span class="tag">httpx</span>
             <span class="tag">systemd</span>
-            <span class="tag">Discord Notify</span>
+            <span class="tag">Slack Notify</span>
             <span class="tag">Security Automation</span>
           </div>
           <a href="https://github.com/7a6179657473/H1_HACTIVITY_MONITOR" target="_blank" rel="noopener" class="project-link">View on GitHub →<span class="sr-only"> (opens in new tab)</span></a>
@@ -845,7 +846,7 @@
           <div class="featured-stats">
             <div class="stat-box">
               <div class="stat-num">4h</div>
-              <div class="stat-label">Scan interval</div>
+              <div class="stat-label">Timer interval</div>
             </div>
             <div class="stat-box">
               <div class="stat-num">2</div>
@@ -1168,4 +1169,4 @@
 </script>
 </body>
 </html>
-<!-- Version 1.0.6 -->
+<!-- Version 1.0.7 -->
