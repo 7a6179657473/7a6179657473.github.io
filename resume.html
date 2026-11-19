@@ -446,9 +446,8 @@
       </div>
       <div class="job-org">Independent Consulting</div>
       <ul class="job-bullets">
-        <li>Provide end-to-end managed IT and security services to small business clients as a one-person MSP, spanning systems administration, help-desk support, network and physical-security assessment, and NIST-aligned continuity planning.</li>
-        <li>Deploy and administer Microsoft 365 Business Premium environments: tenant setup, domain and email configuration, licensing strategy, MX-cutover risk planning, and Intune/Autopilot device management.</li>
-        <li>Author NIST SP 800-34-aligned continuity deliverables (Disaster Recovery Plans / ISCPs and Business Impact Analyses), with client-owned recovery figures (RTO/RPO/MTD) confirmed by the owner rather than assumed, and Business Continuity Plans scoped to each client's size and obligations.</li>
+        <li>Provide end-to-end managed IT and security services to small business clients as a one-person MSP, spanning systems administration, help-desk support, and network and physical-security assessment.</li>
+        <li>Deploy and administer Microsoft 365 Business Premium environments: tenant setup, domain and email configuration, licensing strategy, and MX-cutover risk planning, with Intune/Autopilot device management scoped as the next phase.</li>
         <li>Conduct structured network and physical-security assessments (asset inventory, topology mapping, physical walkthrough, and documentation-gap analysis), diagnosing at the shared root-cause layer to resolve correlated faults with a single coordinated fix.</li>
         <li>Maintain a reusable 11-document engagement template pack and house-style documentation standard that keep client deliverables consistent and cut setup time as the client base grows.</li>
       </ul>
@@ -547,6 +546,27 @@
 
     <div class="project-entry">
       <div class="project-entry-header">
+        <span class="project-entry-name">Bug Bounty Ops Lifecycle (Slack + Claude)</span>
+        <span class="job-dates">2026 – Present</span>
+      </div>
+      <div class="project-entry-sub">Ongoing · Python · Slack Bolt · Claude Code · systemd · ProjectDiscovery notify</div>
+      <ul class="project-entry-bullets">
+        <li>Designed and run the operating lifecycle for a personal bug bounty stack on a Linux workstation: systemd and cron monitors detect new subdomains and HackerOne disclosures and post to purpose-specific Slack channels, where a Slack-connected Claude agent triages and Claude Code runs local recon.</li>
+        <li>Built a two-stage autonomous triage path on least privilege. A passive first pass flags only anomalies worth a closer look (dangling DNS, odd redirect chains, exposed internal hosts). A single-host deep-dive then runs with an allowlisted tool tier (curl, dig, whois, scope checker) enforced at the Claude Code permission layer, not by prompt.</li>
+        <li>Moved scope and volume decisions out of the model: a code-level escalation gate checks bounty eligibility against the program&#39;s scope list and caps escalations at three per day, added after one recon pass turned up 114 out-of-scope hosts among 176 discovered.</li>
+        <li>Required every finding to clear a 7-question gate and four validation checks before reaching #reports; nothing posts there automatically, which keeps N/A submissions out and protects the validity ratio.</li>
+        <li>Put the stack under change control: toolkit, intel-repo, and docs changes go through branches and PRs that are never auto-merged; a daily timer syncs triage results into the private intel repo as one PR per target, with no LLM in the sync path; and the bot commits from an isolated clone so it can&#39;t sweep in uncommitted operator work.</li>
+        <li>Cut alert noise at the source: union baselines ended flapping from variable passive-recon results, removal-only alerts post without waking the agent, and new targets are seeded from prior manual recon so hosts already reviewed by hand are never re-reported.</li>
+      </ul>
+      <div class="project-tags">
+        <span class="tag a">Python</span><span class="tag a">Bash</span>
+        <span class="tag">Slack Bolt</span><span class="tag">Claude Code</span>
+        <span class="tag">systemd</span><span class="tag">notify</span><span class="tag">Agent Guardrails</span>
+      </div>
+    </div>
+
+    <div class="project-entry">
+      <div class="project-entry-header">
         <span class="project-entry-name">AI Shelf Image Generation Pipeline</span>
         <span class="job-dates">March 2026 – June 2026</span>
       </div>
@@ -576,13 +596,13 @@
       <div class="project-entry-sub">Python · HackerOne API · subfinder · httpx · systemd</div>
       <ul class="project-entry-bullets">
         <li>Developed a two-tool Python recon suite: the H1 Hactivity Monitor polls the HackerOne API for real-time disclosed vulnerability reports, surfacing newly public CVEs and researcher write-ups as they are released.</li>
-        <li>Extended into a full automated recon pipeline using subfinder for subdomain enumeration and httpx for live host probing; runs on a systemd timer, diffs target asset baselines every 4 hours, and pushes categorized change alerts to Discord.</li>
+        <li>Extended into a full automated recon pipeline using subfinder for subdomain enumeration and httpx for live host probing; runs on a 4-hour systemd timer with a 24-hour rescan gate, diffs target asset baselines, and pushes categorized change alerts to Slack.</li>
         <li>Engineered for operational reliability: flock-based process locking prevents concurrent runs, automatic state archiving preserves baseline history, and a hardened systemd unit applies filesystem sandboxing and privilege restrictions.</li>
       </ul>
       <div class="project-tags">
         <span class="tag a">Python</span><span class="tag a">Bash</span>
         <span class="tag">HackerOne API</span><span class="tag">subfinder</span>
-        <span class="tag">httpx</span><span class="tag">systemd</span><span class="tag">Discord Notify</span>
+        <span class="tag">httpx</span><span class="tag">systemd</span><span class="tag">Slack Notify</span>
       </div>
     </div>
 
@@ -600,26 +620,6 @@
         <span class="tag a">Python</span><span class="tag a">Scapy</span>
         <span class="tag">Flask</span><span class="tag">Angular</span>
         <span class="tag">WebSocket</span><span class="tag">OUI Lookup</span><span class="tag">Wireless Security</span>
-      </div>
-    </div>
-
-    <div class="project-entry">
-      <div class="project-entry-header">
-        <span class="project-entry-name">Bug Bounty Ops Lifecycle</span>
-        <span class="job-dates">2026</span>
-      </div>
-      <div class="project-entry-sub">Bash · Slack · ProjectDiscovery notify · systemd · Claude Code</div>
-      <ul class="project-entry-bullets">
-        <li>Designed and documented the operating lifecycle for a personal bug bounty stack: systemd and cron monitors detect new subdomains and HackerOne disclosures, route them into five purpose-specific Slack channels, and hand off to LLM-assisted triage (Claude in Slack, Claude Code locally).</li>
-        <li>Used Slack @mentions as the escalation control: new-asset alerts wake the triage bot, while disclosure and CVE feeds post as plain text so nothing acts on noise.</li>
-        <li>Required every finding to clear a 7-question gate and four validation checks before reaching #reports; no script can post there, which keeps N/A submissions out and protects the validity ratio.</li>
-        <li>Eliminated alert flapping caused by variable passive-recon results, first by routing removed-only alerts to a no-mention notify profile, then by promoting union baselines so only genuinely new assets alert.</li>
-        <li>Added a target-enrollment step that seeds baselines from prior manual recon (dry-run by default, network-free, can only reduce alerts), so the monitor never re-reports hosts already reviewed by hand.</li>
-      </ul>
-      <div class="project-tags">
-        <span class="tag a">Bash</span><span class="tag a">Slack</span>
-        <span class="tag">notify</span><span class="tag">systemd</span>
-        <span class="tag">subfinder</span><span class="tag">Claude Code</span><span class="tag">Alert Engineering</span>
       </div>
     </div>
   </div>
@@ -693,4 +693,4 @@
 </script>
 </body>
 </html>
-<!-- Version 1.0.8 -->
+<!-- Version 1.0.9 -->
